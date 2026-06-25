@@ -339,7 +339,6 @@
             <th>Address</th>
             <th>Phone</th>
             <th>Google Maps</th>
-            <th>Rating</th>
           </tr>
         </thead>
         <tbody id="resultsBody"></tbody>
@@ -499,7 +498,8 @@ async function startSearch() {
       const elements = await queryOverpass(areaId, cat.tags);
       elements.forEach(el => {
         const tags = el.tags || {};
-        if (tags.website || tags['contact:website']) return; // skip if has website
+        const hasWebsite = tags.website || tags['contact:website'] || tags['url'] || tags['contact:url'] || tags['website:official'] || tags['brand:website'];
+        if (hasWebsite) return;
         const name = tags.name || tags['name:en'];
         if (!name) return; // skip unnamed entries — useless as leads
         const addr = buildAddress(tags);
@@ -587,7 +587,6 @@ function renderTable() {
       <td>${esc(r.addr) || '<span style="color:#aaa">—</span>'}</td>
       <td>${r.phone ? `<a href="tel:${esc(r.phone)}">${esc(r.phone)}</a>` : '<span style="color:#aaa">—</span>'}</td>
       <td><a class="map-link" href="${r.mapsUrl}" target="_blank" rel="noopener">📍 View on Maps</a></td>
-      <td><a class="map-link" href="https://www.google.com/search?q=${encodeURIComponent(r.name + ' ' + r.addr)}" target="_blank" rel="noopener">⭐ See Rating</a></td>
     </tr>`).join('');
 
   updateCount();
