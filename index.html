@@ -435,11 +435,23 @@ function hideError() {
   document.getElementById('errorBox').classList.remove('visible');
 }
 
-async function queryOverpass(city, tags) {
+async function getCityAreaId(city) {
+  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=10`;
+  const resp = await fetch(url, { headers: { 'Accept-Language': 'en' } });
+  if (!resp.ok) throw new Error('Could not geocode city');
+  const data = await resp.json();
+  // Prefer administrative relations (cities/municipalities)
+  const rel = data.find(d => d.osm_type === 'relation' && ['city','town','municipality','administrative'].includes(d.type))
+            || data.find(d => d.osm_type === 'relation');
+  if (!rel) throw new Error(`City "${city}" not found. Try a different spelling.`);
+  return parseInt(rel.osm_id) + 3600000000;
+}
+
+async function queryOverpass(areaId, tags) {
   const tagFilters = tags.map(t => `["${t.key}"="${t.val}"]`).join('');
   const query = `
 [out:json][timeout:30];
-area[name="${city}"][admin_level~"^[2-8]$"]->.a;
+area(${areaId})->.a;
 (
   node${tagFilters}(area.a);
   way${tagFilters}(area.a);
@@ -468,11 +480,22 @@ async function startSearch() {
   document.getElementById('searchBtn').disabled = true;
   allResults = [];
 
+  let areaId;
+  try {
+    setStatus(`Looking up "${city}"...`);
+    areaId = await getCityAreaId(city);
+  } catch(e) {
+    showError(e.message);
+    setStatus('', false);
+    document.getElementById('searchBtn').disabled = false;
+    return;
+  }
+
   for (let i = 0; i < cats.length; i++) {
     const cat = cats[i];
     setStatus(`Searching ${city} for ${cat.label}... (${i+1}/${cats.length})`);
     try {
-      const elements = await queryOverpass(city, cat.tags);
+      const elements = await queryOverpass(areaId, cat.tags);
       elements.forEach(el => {
         const tags = el.tags || {};
         if (tags.website || tags['contact:website']) return; // skip if has website
