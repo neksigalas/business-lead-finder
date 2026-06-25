@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Lead Finder — No Website Detector</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    min-height: 100vh;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: white;
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+  header p { color: #a0aec0; font-size: 1rem; }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .card h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; color: #2d3748; }
+
+  .city-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input[type="text"]:focus { border-color: #667eea; }
+
+  .btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+  }
+
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .btn-secondary {
+    background: #e2e8f0;
+    color: #4a5568;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+
+  .btn-secondary:hover { background: #cbd5e0; }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+
+  .category-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .category-item:hover { border-color: #667eea; background: #f7f8ff; }
+  .category-item.active { border-color: #667eea; background: #eef2ff; }
+
+  .category-item input { display: none; }
+  .category-icon { font-size: 1.2rem; }
+  .category-label { font-size: 0.9rem; font-weight: 500; }
+
+  .status-bar {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: #eef2ff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: #4a5568;
+  }
+
+  .status-bar.visible { display: flex; }
+
+  .spinner {
+    width: 20px; height: 20px;
+    border: 3px solid #c3d0f7;
+    border-top-color: #667eea;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    background: #667eea;
+    color: white;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .filter-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .filter-row input[type="text"] {
+    max-width: 260px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+
+  select {
+    padding: 8px 14px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    background: white;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  thead th {
+    background: #f7fafc;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    color: #4a5568;
+    border-bottom: 2px solid #e2e8f0;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  thead th:hover { background: #edf2f7; }
+
+  tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.1s;
+  }
+
+  tbody tr:hover { background: #f7f8ff; }
+
+  tbody td {
+    padding: 10px 14px;
+    vertical-align: middle;
+  }
+
+  .cb-cell { width: 36px; text-align: center; }
+  input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; }
+
+  .type-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #e9d8fd;
+    color: #553c9a;
+  }
+
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .map-link:hover { text-decoration: underline; }
+
+  .empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: #718096;
+  }
+
+  .empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
+
+  .export-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 2px solid #f0f0f0;
+  }
+
+  .selected-count {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-left: auto;
+  }
+
+  .error-box {
+    display: none;
+    background: #fff5f5;
+    border: 1px solid #fc8181;
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: #c53030;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+  }
+
+  .error-box.visible { display: block; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.5rem; }
+    table { font-size: 0.8rem; }
+    tbody td { padding: 8px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🔍 Business Lead Finder</h1>
+  <p>Find local businesses that have no website — your next clients are waiting</p>
+</header>
+
+<div class="container">
+
+  <!-- Search Card -->
+  <div class="card">
+    <h2>Search Settings</h2>
+    <div class="city-row">
+      <input type="text" id="cityInput" placeholder="Enter city (e.g. Amsterdam, London, Berlin...)" />
+      <button class="btn btn-primary" id="searchBtn" onclick="startSearch()">Search</button>
+    </div>
+  </div>
+
+  <!-- Categories Card -->
+  <div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <h2 style="margin:0">Business Categories</h2>
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-secondary" onclick="selectAll()">All</button>
+        <button class="btn btn-secondary" onclick="selectNone()">None</button>
+      </div>
+    </div>
+    <div class="categories-grid" id="categoriesGrid"></div>
+  </div>
+
+  <!-- Status -->
+  <div class="status-bar" id="statusBar">
+    <div class="spinner"></div>
+    <span id="statusText">Searching...</span>
+  </div>
+
+  <!-- Error -->
+  <div class="error-box" id="errorBox"></div>
+
+  <!-- Results Card -->
+  <div class="card" id="resultsCard" style="display:none;">
+    <div class="results-header">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <h2 style="margin:0">Results</h2>
+        <span class="badge" id="resultCount">0</span>
+      </div>
+      <span style="font-size:0.85rem; color:#718096;">Only businesses with <strong>no website</strong> shown</span>
+    </div>
+
+    <div class="filter-row">
+      <input type="text" id="filterInput" placeholder="Filter by name or address..." oninput="applyFilter()" />
+      <select id="categoryFilter" onchange="applyFilter()">
+        <option value="">All categories</option>
+      </select>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th class="cb-cell"><input type="checkbox" id="checkAll" onclick="toggleAll(this)" title="Select all"></th>
+            <th onclick="sortBy('name')">Business Name ↕</th>
+            <th onclick="sortBy('type')">Category ↕</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Google Maps</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+    </div>
+
+    <div id="emptyState" class="empty-state" style="display:none;">
+      <div class="icon">🎉</div>
+      <div>No results match your filter.</div>
+    </div>
+
+    <div class="export-row">
+      <button class="btn btn-primary" onclick="exportCSV()">⬇ Export CSV</button>
+      <button class="btn btn-secondary" onclick="copySelected()">📋 Copy selected</button>
+      <span class="selected-count" id="selectedCount">0 selected</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const CATEGORIES = [
+  { label: "Plumbers",        icon: "🔧", tags: [{key:"craft",val:"plumber"}] },
+  { label: "Electricians",    icon: "⚡", tags: [{key:"craft",val:"electrician"}] },
+  { label: "Carpenters",      icon: "🪚", tags: [{key:"craft",val:"carpenter"}] },
+  { label: "Painters",        icon: "🎨", tags: [{key:"craft",val:"painter"}] },
+  { label: "Hairdressers",    icon: "✂️", tags: [{key:"shop",val:"hairdresser"}] },
+  { label: "Beauty Salons",   icon: "💅", tags: [{key:"shop",val:"beauty"}] },
+  { label: "Car Repair",      icon: "🚗", tags: [{key:"shop",val:"car_repair"}] },
+  { label: "Restaurants",     icon: "🍽️", tags: [{key:"amenity",val:"restaurant"}] },
+  { label: "Cafes",           icon: "☕", tags: [{key:"amenity",val:"cafe"}] },
+  { label: "Bakeries",        icon: "🥖", tags: [{key:"shop",val:"bakery"}] },
+  { label: "Dentists",        icon: "🦷", tags: [{key:"amenity",val:"dentist"}] },
+  { label: "Lawyers",         icon: "⚖️", tags: [{key:"amenity",val:"lawyers"}] },
+  { label: "Accountants",     icon: "📊", tags: [{key:"office",val:"accountant"}] },
+  { label: "Cleaners",        icon: "🧹", tags: [{key:"shop",val:"dry_cleaning"}] },
+  { label: "Florists",        icon: "🌸", tags: [{key:"shop",val:"florist"}] },
+  { label: "Photographers",   icon: "📷", tags: [{key:"shop",val:"photo"}] },
+  { label: "Gyms",            icon: "🏋️", tags: [{key:"leisure",val:"fitness_centre"}] },
+  { label: "Opticians",       icon: "👓", tags: [{key:"shop",val:"optician"}] },
+];
+
+let allResults = [];
+let filtered = [];
+let sortField = 'name';
+let sortAsc = true;
+
+// Build categories UI
+const grid = document.getElementById('categoriesGrid');
+CATEGORIES.forEach((cat, i) => {
+  const div = document.createElement('div');
+  div.className = 'category-item active';
+  div.dataset.idx = i;
+  div.innerHTML = `<input type="checkbox" checked id="cat${i}">
+    <span class="category-icon">${cat.icon}</span>
+    <span class="category-label">${cat.label}</span>`;
+  div.addEventListener('click', () => {
+    div.classList.toggle('active');
+    div.querySelector('input').checked = div.classList.contains('active');
+  });
+  grid.appendChild(div);
+});
+
+function selectAll() {
+  document.querySelectorAll('.category-item').forEach(d => {
+    d.classList.add('active');
+    d.querySelector('input').checked = true;
+  });
+}
+function selectNone() {
+  document.querySelectorAll('.category-item').forEach(d => {
+    d.classList.remove('active');
+    d.querySelector('input').checked = false;
+  });
+}
+
+function getSelectedCategories() {
+  return [...document.querySelectorAll('.category-item.active')].map(d => CATEGORIES[+d.dataset.idx]);
+}
+
+function setStatus(text, visible=true) {
+  const bar = document.getElementById('statusBar');
+  document.getElementById('statusText').textContent = text;
+  bar.classList.toggle('visible', visible);
+}
+
+function showError(msg) {
+  const box = document.getElementById('errorBox');
+  box.textContent = msg;
+  box.classList.add('visible');
+}
+
+function hideError() {
+  document.getElementById('errorBox').classList.remove('visible');
+}
+
+async function queryOverpass(city, tags) {
+  const tagFilters = tags.map(t => `["${t.key}"="${t.val}"]`).join('');
+  const query = `
+[out:json][timeout:30];
+area[name="${city}"][admin_level~"^[2-8]$"]->.a;
+(
+  node${tagFilters}(area.a);
+  way${tagFilters}(area.a);
+)->.all;
+.all out center tags;`;
+
+  const url = 'https://overpass-api.de/api/interpreter';
+  const resp = await fetch(url, {
+    method: 'POST',
+    body: 'data=' + encodeURIComponent(query),
+  });
+  if (!resp.ok) throw new Error('Overpass API error: ' + resp.status);
+  const json = await resp.json();
+  return json.elements || [];
+}
+
+async function startSearch() {
+  const city = document.getElementById('cityInput').value.trim();
+  if (!city) { alert('Please enter a city name.'); return; }
+
+  const cats = getSelectedCategories();
+  if (!cats.length) { alert('Please select at least one category.'); return; }
+
+  hideError();
+  document.getElementById('resultsCard').style.display = 'none';
+  document.getElementById('searchBtn').disabled = true;
+  allResults = [];
+
+  for (let i = 0; i < cats.length; i++) {
+    const cat = cats[i];
+    setStatus(`Searching ${city} for ${cat.label}... (${i+1}/${cats.length})`);
+    try {
+      const elements = await queryOverpass(city, cat.tags);
+      elements.forEach(el => {
+        const tags = el.tags || {};
+        if (tags.website || tags['contact:website']) return; // skip if has website
+        const name = tags.name || tags['name:en'] || '(no name)';
+        const addr = buildAddress(tags);
+        const phone = tags.phone || tags['contact:phone'] || '';
+        const lat = el.lat ?? el.center?.lat;
+        const lon = el.lon ?? el.center?.lon;
+        const mapsUrl = lat
+          ? `https://www.google.com/maps?q=${lat},${lon}`
+          : `https://www.google.com/maps/search/${encodeURIComponent(name + ' ' + city)}`;
+        allResults.push({ name, type: cat.label, icon: cat.icon, addr, phone, mapsUrl });
+      });
+    } catch(e) {
+      console.warn('Error for', cat.label, e);
+    }
+  }
+
+  setStatus('', false);
+  document.getElementById('searchBtn').disabled = false;
+
+  if (!allResults.length) {
+    showError(`No businesses without websites found in "${city}" for the selected categories. Try a larger city or more categories.`);
+    return;
+  }
+
+  // Populate category filter
+  const cf = document.getElementById('categoryFilter');
+  cf.innerHTML = '<option value="">All categories</option>';
+  const usedCats = [...new Set(allResults.map(r => r.type))];
+  usedCats.forEach(c => cf.innerHTML += `<option value="${c}">${c}</option>`);
+
+  applyFilter();
+  document.getElementById('resultsCard').style.display = 'block';
+}
+
+function buildAddress(tags) {
+  const parts = [
+    tags['addr:street'] ? (tags['addr:street'] + (tags['addr:housenumber'] ? ' ' + tags['addr:housenumber'] : '')) : '',
+    tags['addr:city'] || '',
+    tags['addr:postcode'] || '',
+  ].filter(Boolean);
+  return parts.join(', ') || '';
+}
+
+function applyFilter() {
+  const text = document.getElementById('filterInput').value.toLowerCase();
+  const cat = document.getElementById('categoryFilter').value;
+
+  filtered = allResults.filter(r => {
+    const matchText = !text || r.name.toLowerCase().includes(text) || r.addr.toLowerCase().includes(text);
+    const matchCat = !cat || r.type === cat;
+    return matchText && matchCat;
+  });
+
+  sortResults();
+}
+
+function sortBy(field) {
+  if (sortField === field) sortAsc = !sortAsc;
+  else { sortField = field; sortAsc = true; }
+  sortResults();
+}
+
+function sortResults() {
+  filtered.sort((a, b) => {
+    const av = a[sortField] || '';
+    const bv = b[sortField] || '';
+    return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  renderTable();
+}
+
+function renderTable() {
+  const tbody = document.getElementById('resultsBody');
+  document.getElementById('resultCount').textContent = filtered.length;
+
+  if (!filtered.length) {
+    tbody.innerHTML = '';
+    document.getElementById('emptyState').style.display = 'block';
+    return;
+  }
+  document.getElementById('emptyState').style.display = 'none';
+
+  tbody.innerHTML = filtered.map((r, i) => `
+    <tr>
+      <td class="cb-cell"><input type="checkbox" class="row-cb" data-idx="${i}" onchange="updateCount()"></td>
+      <td><strong>${esc(r.name)}</strong></td>
+      <td><span class="type-badge">${r.icon} ${esc(r.type)}</span></td>
+      <td>${esc(r.addr) || '<span style="color:#aaa">—</span>'}</td>
+      <td>${r.phone ? `<a href="tel:${esc(r.phone)}">${esc(r.phone)}</a>` : '<span style="color:#aaa">—</span>'}</td>
+      <td><a class="map-link" href="${r.mapsUrl}" target="_blank" rel="noopener">📍 View on Maps</a></td>
+    </tr>`).join('');
+
+  updateCount();
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function toggleAll(cb) {
+  document.querySelectorAll('.row-cb').forEach(r => r.checked = cb.checked);
+  updateCount();
+}
+
+function updateCount() {
+  const n = document.querySelectorAll('.row-cb:checked').length;
+  document.getElementById('selectedCount').textContent = `${n} selected`;
+}
+
+function getSelectedRows() {
+  return [...document.querySelectorAll('.row-cb:checked')].map(cb => filtered[+cb.dataset.idx]);
+}
+
+function exportCSV() {
+  const rows = getSelectedRows().length ? getSelectedRows() : filtered;
+  const header = ['Name','Category','Address','Phone','Google Maps URL'];
+  const lines = [header, ...rows.map(r => [r.name, r.type, r.addr, r.phone, r.mapsUrl].map(v => `"${v.replace(/"/g,'""')}"`))];
+  const csv = lines.map(l => l.join(',')).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'leads.csv';
+  a.click();
+}
+
+function copySelected() {
+  const rows = getSelectedRows().length ? getSelectedRows() : filtered;
+  const text = rows.map(r => `${r.name} | ${r.type} | ${r.addr} | ${r.phone} | ${r.mapsUrl}`).join('\n');
+  navigator.clipboard.writeText(text).then(() => alert(`Copied ${rows.length} leads to clipboard!`));
+}
+</script>
+</body>
+</html>
