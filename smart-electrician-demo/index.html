@@ -6,667 +6,661 @@
 <title>Smart Electrician — Ηλεκτρολόγοι Αθήνα</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
 :root{
-  --yellow:#f59e0b;
-  --yellow-light:#fcd34d;
-  --dark:#0d1117;
-  --dark2:#161b22;
-  --dark3:#21262d;
-  --blue:#1d4ed8;
-  --text:#e6edf3;
-  --muted:#8b949e;
+  --gold:#f59e0b;
+  --gold2:#fbbf24;
+  --gold3:#fde68a;
+  --dark:#080c12;
+  --dark2:#0e1420;
+  --dark3:#141c2e;
+  --dark4:#1a2540;
+  --text:#f0f4ff;
+  --muted:#7a8aaa;
+  --muted2:#4a5a7a;
 }
-
 html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden}
 
-body{
-  font-family:'Inter',sans-serif;
-  background:var(--dark);
-  color:var(--text);
-  overflow-x:hidden;
-}
-
-/* ===== NAV ===== */
+/* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:16px 40px;
-  background:rgba(13,17,23,0.85);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,0.06);
+  padding:18px 48px;
+  background:rgba(8,12,18,0.8);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(245,158,11,0.08);
 }
-
-.nav-logo{
-  display:flex;align-items:center;gap:10px;
-  font-size:1.2rem;font-weight:800;
-}
-.nav-logo .bolt{
-  width:36px;height:36px;
-  background:var(--yellow);
-  border-radius:8px;
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-icon{
+  width:40px;height:40px;
+  background:linear-gradient(135deg,#f59e0b,#d97706);
+  border-radius:10px;
   display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;
-  box-shadow:0 0 20px rgba(245,158,11,0.5);
+  box-shadow:0 0 24px rgba(245,158,11,0.35);
 }
-
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{
-  color:var(--muted);text-decoration:none;
-  font-size:0.9rem;font-weight:500;
-  transition:color 0.2s;
-}
+.nav-logo-text{font-size:1.15rem;font-weight:800;color:var(--text);letter-spacing:-0.02em}
+.nav-logo-text span{color:var(--gold)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;letter-spacing:0.01em}
 .nav-links a:hover{color:var(--text)}
-
 .nav-cta{
-  padding:10px 22px;
-  background:var(--yellow);
-  color:#000;
-  border-radius:8px;
-  font-weight:700;font-size:0.9rem;
-  text-decoration:none;
-  transition:all 0.2s;
+  display:flex;align-items:center;gap:8px;
+  padding:11px 24px;
+  background:linear-gradient(135deg,var(--gold),#d97706);
+  color:#000;border-radius:10px;font-weight:700;font-size:0.88rem;
+  text-decoration:none;transition:all 0.2s;
+  box-shadow:0 4px 16px rgba(245,158,11,0.3);
 }
-.nav-cta:hover{background:var(--yellow-light);transform:translateY(-1px)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,158,11,0.45)}
+@media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}}
 
-@media(max-width:768px){
-  nav{padding:14px 20px}
-  .nav-links{display:none}
-}
-
-/* ===== HERO ===== */
+/* HERO */
 .hero{
   min-height:100vh;
-  display:flex;align-items:center;
-  padding:120px 40px 80px;
-  position:relative;
-  overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:120px 48px 80px;
+  position:relative;overflow:hidden;
+  gap:60px;
+}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding:120px 24px 80px}}
+
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 70% at 70% 50%, rgba(245,158,11,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 0% 100%, rgba(29,78,216,0.06) 0%, transparent 50%);
 }
 
-.hero-bg{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 60% 40%, rgba(245,158,11,0.08) 0%, transparent 60%),
-             radial-gradient(ellipse 60% 80% at 10% 80%, rgba(29,78,216,0.12) 0%, transparent 60%);
-}
-
-.hero-grid{
-  position:absolute;inset:0;
+/* subtle grid */
+.hero::after{
+  content:'';position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
-  background-size:50px 50px;
+    linear-gradient(rgba(245,158,11,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,158,11,0.03) 1px, transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
 }
 
-.hero-content{
-  position:relative;z-index:1;
-  max-width:680px;
-}
+.hero-left{position:relative;z-index:1}
 
-.hero-badge{
+.hero-eyebrow{
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(245,158,11,0.1);
-  border:1px solid rgba(245,158,11,0.3);
-  border-radius:100px;
-  padding:6px 16px;
-  font-size:0.78rem;font-weight:600;
-  color:var(--yellow);
-  letter-spacing:0.06em;text-transform:uppercase;
-  margin-bottom:24px;
+  border:1px solid rgba(245,158,11,0.25);
+  border-radius:100px;padding:5px 14px 5px 8px;
+  margin-bottom:28px;
+  background:rgba(245,158,11,0.06);
 }
-.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);animation:blink 2s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.eyebrow-dot{
+  width:24px;height:24px;background:rgba(245,158,11,0.15);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+}
+.eyebrow-dot svg{width:12px;height:12px}
+.hero-eyebrow span{font-size:0.75rem;font-weight:600;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase}
 
 .hero h1{
-  font-size:clamp(2.8rem,6vw,5rem);
-  font-weight:900;
-  line-height:1.05;
+  font-size:clamp(2.6rem,5.5vw,4.2rem);
+  font-weight:900;line-height:1.05;letter-spacing:-0.03em;
   margin-bottom:24px;
 }
-
-.hero h1 .accent{
-  background:linear-gradient(135deg,var(--yellow),#f97316);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--gold),var(--gold2),#f97316);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
 
-.hero p{
-  font-size:1.15rem;
-  color:var(--muted);
-  line-height:1.7;
-  margin-bottom:40px;
-  max-width:520px;
+.hero-desc{
+  font-size:1.05rem;color:var(--muted);line-height:1.75;
+  margin-bottom:40px;max-width:480px;font-weight:400;
 }
 
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
 
-.btn-primary{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:16px 32px;
-  background:var(--yellow);
-  color:#000;
-  border-radius:10px;
-  font-weight:700;font-size:1rem;
-  text-decoration:none;
-  transition:all 0.2s;
-  border:none;cursor:pointer;
+.btn-gold{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:15px 30px;
+  background:linear-gradient(135deg,var(--gold),#d97706);
+  color:#000;border-radius:10px;font-weight:700;font-size:0.95rem;
+  text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 4px 20px rgba(245,158,11,0.35);
+  transition:all 0.25s;letter-spacing:0.01em;
 }
-.btn-primary:hover{background:var(--yellow-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,158,11,0.4)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(245,158,11,0.5)}
 
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:16px 32px;
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.12);
-  color:var(--text);
-  border-radius:10px;
-  font-weight:600;font-size:1rem;
-  text-decoration:none;
-  transition:all 0.2s;
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:15px 30px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.1);
+  color:var(--text);border-radius:10px;font-weight:600;font-size:0.95rem;
+  text-decoration:none;cursor:pointer;
+  transition:all 0.25s;
 }
-.btn-secondary:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px)}
+.btn-ghost:hover{border-color:rgba(245,158,11,0.4);background:rgba(245,158,11,0.05);transform:translateY(-2px)}
 
 .hero-stats{
-  display:flex;gap:40px;margin-top:56px;flex-wrap:wrap;
-}
-.stat{border-left:2px solid var(--yellow);padding-left:16px}
-.stat-num{font-size:2rem;font-weight:800;color:var(--yellow)}
-.stat-label{font-size:0.82rem;color:var(--muted);margin-top:2px}
-
-.hero-image{
-  position:absolute;right:0;top:50%;transform:translateY(-50%);
-  width:45%;max-width:580px;
-  display:flex;align-items:center;justify-content:center;
-}
-
-.electric-visual{
-  width:420px;height:420px;
-  border-radius:50%;
-  background:radial-gradient(circle at 40% 40%, rgba(245,158,11,0.15), transparent 60%);
-  border:1px solid rgba(245,158,11,0.15);
-  display:flex;align-items:center;justify-content:center;
-  position:relative;
-  animation:rotateSlow 20s linear infinite;
-}
-
-.electric-visual::before{
-  content:'';
-  position:absolute;
-  width:300px;height:300px;
-  border-radius:50%;
-  border:1px solid rgba(245,158,11,0.1);
-  animation:rotateSlow 15s linear infinite reverse;
-}
-
-.electric-inner{
-  width:200px;height:200px;
-  border-radius:50%;
-  background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(29,78,216,0.2));
-  border:2px solid rgba(245,158,11,0.3);
-  display:flex;align-items:center;justify-content:center;
-  font-size:5rem;
-  box-shadow:0 0 60px rgba(245,158,11,0.2);
-  animation:none;
-}
-
-@keyframes rotateSlow{to{transform:rotate(360deg)}}
-
-@media(max-width:900px){.hero-image{display:none}}
-
-/* ===== SECTIONS ===== */
-section{padding:96px 40px}
-@media(max-width:600px){section{padding:64px 20px}}
-
-.section-label{
-  display:inline-block;
-  font-size:0.72rem;font-weight:700;
-  text-transform:uppercase;letter-spacing:0.1em;
-  color:var(--yellow);margin-bottom:12px;
-}
-.section-title{
-  font-size:clamp(1.8rem,4vw,2.8rem);
-  font-weight:800;margin-bottom:16px;
-}
-.section-sub{
-  font-size:1rem;color:var(--muted);
-  max-width:500px;line-height:1.7;margin-bottom:56px;
-}
-
-.container{max-width:1100px;margin:0 auto}
-
-/* ===== SERVICES ===== */
-.services-bg{background:var(--dark2)}
-
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:20px;
-}
-
-.service-card{
-  background:var(--dark3);
+  display:flex;gap:0;
+  background:rgba(255,255,255,0.03);
   border:1px solid rgba(255,255,255,0.06);
-  border-radius:16px;
-  padding:28px;
-  transition:all 0.3s;
-  position:relative;overflow:hidden;
+  border-radius:14px;overflow:hidden;
 }
+.stat-item{
+  flex:1;padding:18px 20px;
+  border-right:1px solid rgba(255,255,255,0.06);
+}
+.stat-item:last-child{border-right:none}
+.stat-num{font-size:1.7rem;font-weight:800;color:var(--gold);letter-spacing:-0.03em}
+.stat-lbl{font-size:0.72rem;color:var(--muted);margin-top:3px;font-weight:500}
 
-.service-card::before{
-  content:'';
-  position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--yellow),#f97316);
+/* HERO RIGHT — visual */
+.hero-right{
+  position:relative;z-index:1;
+  display:flex;align-items:center;justify-content:center;
+}
+@media(max-width:900px){.hero-right{display:none}}
+
+.orb-wrap{position:relative;width:420px;height:420px}
+.orb-outer{
+  position:absolute;inset:0;border-radius:50%;
+  border:1px solid rgba(245,158,11,0.1);
+  animation:spinSlow 30s linear infinite;
+}
+.orb-outer::before{
+  content:'';position:absolute;top:-3px;left:50%;
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 12px var(--gold);
+  transform:translateX(-50%);
+}
+.orb-mid{
+  position:absolute;inset:40px;border-radius:50%;
+  border:1px solid rgba(245,158,11,0.07);
+  animation:spinSlow 20s linear infinite reverse;
+}
+.orb-inner{
+  position:absolute;inset:100px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(249,115,22,0.08));
+  border:1px solid rgba(245,158,11,0.2);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 80px rgba(245,158,11,0.1),inset 0 0 40px rgba(245,158,11,0.05);
+}
+.orb-icon{
+  width:80px;height:80px;
+  background:linear-gradient(135deg,var(--gold),#d97706);
+  border-radius:20px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 40px rgba(245,158,11,0.5);
+}
+.orb-icon svg{width:42px;height:42px}
+
+/* floating cards */
+.float-card{
+  position:absolute;
+  background:rgba(14,20,32,0.9);
+  border:1px solid rgba(245,158,11,0.15);
+  border-radius:12px;padding:12px 16px;
+  backdrop-filter:blur(16px);
+  display:flex;align-items:center;gap:10px;
+  font-size:0.82rem;font-weight:600;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+.float-card .fc-icon{
+  width:32px;height:32px;border-radius:8px;
+  background:rgba(245,158,11,0.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;
+}
+.float-card-top{top:30px;right:0;animation:floatY 4s ease-in-out infinite}
+.float-card-bot{bottom:50px;left:0;animation:floatY 4s ease-in-out infinite 2s}
+.fc-sub{font-size:0.72rem;color:var(--muted);font-weight:400}
+
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* SECTIONS */
+section{padding:100px 48px}
+@media(max-width:600px){section{padding:64px 20px}}
+.container{max-width:1100px;margin:0 auto}
+.sec-tag{
+  display:inline-block;font-size:0.7rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--gold);margin-bottom:10px;
+}
+.sec-title{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:14px;line-height:1.15}
+.sec-sub{font-size:0.95rem;color:var(--muted);max-width:480px;line-height:1.75;margin-bottom:56px}
+
+/* SERVICES */
+.services-wrap{background:var(--dark2)}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;background:rgba(255,255,255,0.04);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+.svc-card{
+  background:var(--dark2);padding:32px 28px;
+  transition:background 0.2s;position:relative;overflow:hidden;
+}
+.svc-card:hover{background:var(--dark3)}
+.svc-card-glow{
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
   opacity:0;transition:opacity 0.3s;
 }
-.service-card:hover{border-color:rgba(245,158,11,0.2);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.3)}
-.service-card:hover::before{opacity:1}
-
-.service-icon{
-  width:48px;height:48px;
-  background:rgba(245,158,11,0.1);
-  border-radius:12px;
+.svc-card:hover .svc-card-glow{opacity:1}
+.svc-num{
+  font-size:0.7rem;font-weight:700;letter-spacing:0.1em;
+  color:var(--muted2);margin-bottom:20px;font-variant-numeric:tabular-nums;
+}
+.svc-icon-wrap{
+  width:52px;height:52px;border-radius:14px;
+  background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.12);
   display:flex;align-items:center;justify-content:center;
-  font-size:1.4rem;margin-bottom:16px;
+  margin-bottom:18px;
 }
-.service-card h3{font-size:1rem;font-weight:700;margin-bottom:8px}
-.service-card p{font-size:0.88rem;color:var(--muted);line-height:1.6}
+.svc-icon-wrap svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.svc-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em}
+.svc-card p{font-size:0.85rem;color:var(--muted);line-height:1.65}
 
-/* ===== WHY US ===== */
-.why-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:60px;align-items:center;
-}
-@media(max-width:768px){.why-grid{grid-template-columns:1fr}}
-
-.why-list{display:flex;flex-direction:column;gap:20px}
-
+/* WHY */
+.why-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:768px){.why-layout{grid-template-columns:1fr}}
+.why-items{display:flex;flex-direction:column;gap:16px}
 .why-item{
-  display:flex;gap:16px;
-  padding:20px;
-  background:var(--dark2);
-  border:1px solid rgba(255,255,255,0.05);
-  border-radius:12px;
-  transition:border-color 0.2s;
+  display:flex;gap:16px;padding:22px;
+  background:var(--dark2);border:1px solid rgba(255,255,255,0.04);
+  border-radius:14px;transition:border-color 0.2s,transform 0.2s;
 }
-.why-item:hover{border-color:rgba(245,158,11,0.2)}
-
-.why-icon{
+.why-item:hover{border-color:rgba(245,158,11,0.2);transform:translateX(4px)}
+.wi-icon{
   width:44px;height:44px;flex-shrink:0;
-  background:rgba(245,158,11,0.1);
-  border-radius:10px;
+  background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.12);
+  border-radius:11px;display:flex;align-items:center;justify-content:center;
+}
+.wi-icon svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.6}
+.wi-title{font-size:0.92rem;font-weight:700;margin-bottom:4px}
+.wi-desc{font-size:0.83rem;color:var(--muted);line-height:1.55}
+
+/* Rating panel */
+.rating-panel{
+  background:var(--dark2);border:1px solid rgba(245,158,11,0.12);
+  border-radius:20px;padding:36px;
+}
+.rp-top{display:flex;align-items:flex-end;gap:20px;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.rp-big{font-size:5rem;font-weight:900;line-height:1;color:var(--gold);letter-spacing:-0.04em}
+.rp-right{}
+.rp-stars{display:flex;gap:3px;margin-bottom:4px}
+.rp-stars svg{width:18px;height:18px;fill:var(--gold)}
+.rp-count{font-size:0.82rem;color:var(--muted)}
+.rp-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.rp-bar-lbl{font-size:0.78rem;color:var(--muted);width:28px;flex-shrink:0;text-align:right}
+.rp-track{flex:1;height:5px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden}
+.rp-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.rp-n{font-size:0.78rem;color:var(--muted);width:20px}
+
+/* REVIEWS */
+.reviews-wrap{background:var(--dark2)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px}
+.rv-card{
+  background:var(--dark);border:1px solid rgba(255,255,255,0.05);
+  border-radius:18px;padding:26px;transition:border-color 0.2s,transform 0.2s;
+}
+.rv-card:hover{border-color:rgba(245,158,11,0.15);transform:translateY(-3px)}
+.rv-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.rv-avatar{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  font-size:1.2rem;
+  font-weight:800;font-size:1rem;color:#000;
 }
-.why-item h4{font-size:0.95rem;font-weight:700;margin-bottom:4px}
-.why-item p{font-size:0.84rem;color:var(--muted);line-height:1.5}
+.rv-name{font-weight:700;font-size:0.9rem;margin-bottom:2px}
+.rv-meta{font-size:0.75rem;color:var(--muted)}
+.rv-stars{display:flex;gap:2px;margin-bottom:12px}
+.rv-stars svg{width:13px;height:13px;fill:var(--gold)}
+.rv-text{font-size:0.85rem;color:var(--muted);line-height:1.65}
+.rv-text strong{color:var(--text);font-weight:600}
 
-.why-visual{
-  background:var(--dark2);
-  border:1px solid rgba(245,158,11,0.15);
-  border-radius:20px;
-  padding:32px;
+/* CONTACT */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+@media(max-width:768px){.contact-layout{grid-template-columns:1fr}}
+.ci-items{display:flex;flex-direction:column;gap:14px}
+.ci-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:20px;background:var(--dark2);
+  border:1px solid rgba(255,255,255,0.04);border-radius:12px;
 }
-.rating-big{
-  text-align:center;padding-bottom:24px;
-  border-bottom:1px solid rgba(255,255,255,0.06);
-  margin-bottom:24px;
-}
-.rating-num{font-size:4rem;font-weight:900;color:var(--yellow)}
-.stars{font-size:1.4rem;margin:4px 0}
-.rating-count{font-size:0.85rem;color:var(--muted)}
-
-.rating-bar{margin-bottom:10px}
-.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.bar-label{font-size:0.8rem;color:var(--muted);width:40px;flex-shrink:0}
-.bar-track{flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
-.bar-fill{height:100%;border-radius:3px;background:var(--yellow)}
-.bar-count{font-size:0.8rem;color:var(--muted);width:24px;text-align:right}
-
-/* ===== REVIEWS ===== */
-.reviews-bg{background:var(--dark2)}
-
-.reviews-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
-  gap:20px;
-}
-
-.review-card{
-  background:var(--dark3);
-  border:1px solid rgba(255,255,255,0.06);
-  border-radius:16px;
-  padding:24px;
-  transition:transform 0.2s;
-}
-.review-card:hover{transform:translateY(-3px)}
-
-.review-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.reviewer-avatar{
-  width:44px;height:44px;border-radius:50%;
-  background:linear-gradient(135deg,var(--yellow),#f97316);
+.ci-icon{
+  width:40px;height:40px;flex-shrink:0;border-radius:10px;
+  background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.1);
   display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:1rem;color:#000;flex-shrink:0;
 }
-.reviewer-name{font-weight:700;font-size:0.92rem}
-.reviewer-meta{font-size:0.78rem;color:var(--muted)}
-.review-stars{font-size:0.85rem;margin-bottom:10px}
-.review-text{font-size:0.88rem;color:var(--muted);line-height:1.6}
-.review-text strong{color:var(--text)}
+.ci-icon svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.6}
+.ci-label{font-size:0.75rem;color:var(--muted);margin-bottom:4px;font-weight:500}
+.ci-val{font-size:0.95rem;font-weight:600}
+.ci-val a{color:var(--gold);text-decoration:none}
+.ci-val a:hover{text-decoration:underline}
 
-/* ===== CONTACT ===== */
-.contact-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:60px;align-items:start;
+.cf-wrap{
+  background:var(--dark2);border:1px solid rgba(255,255,255,0.05);
+  border-radius:20px;padding:36px;
 }
-@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
-
-.contact-info{display:flex;flex-direction:column;gap:20px;margin-top:8px}
-
-.contact-item{
-  display:flex;gap:16px;align-items:flex-start;
-  padding:20px;
-  background:var(--dark2);
-  border:1px solid rgba(255,255,255,0.06);
-  border-radius:12px;
+.cf-wrap h3{font-size:1.15rem;font-weight:800;margin-bottom:6px;letter-spacing:-0.02em}
+.cf-sub{font-size:0.83rem;color:var(--muted);margin-bottom:28px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:0.78rem;font-weight:600;color:var(--muted);margin-bottom:6px;letter-spacing:0.04em;text-transform:uppercase}
+.fg input,.fg textarea{
+  width:100%;padding:13px 16px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:9px;color:var(--text);
+  font-size:0.92rem;font-family:'Inter',sans-serif;
+  outline:none;transition:border-color 0.2s;
 }
-.contact-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
-.contact-item h4{font-size:0.88rem;color:var(--muted);margin-bottom:4px}
-.contact-item p{font-size:1rem;font-weight:600}
-.contact-item a{color:var(--yellow);text-decoration:none}
-.contact-item a:hover{text-decoration:underline}
+.fg input:focus,.fg textarea:focus{border-color:rgba(245,158,11,0.4);background:rgba(245,158,11,0.02)}
+.fg textarea{resize:vertical;min-height:110px}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
-.contact-form{
-  background:var(--dark2);
-  border:1px solid rgba(255,255,255,0.06);
-  border-radius:20px;
-  padding:32px;
-}
-.contact-form h3{font-size:1.2rem;font-weight:700;margin-bottom:24px}
-
-.form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:0.82rem;font-weight:600;color:var(--muted);margin-bottom:6px}
-.form-group input,
-.form-group textarea{
-  width:100%;
-  padding:12px 16px;
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:8px;
-  color:var(--text);
-  font-size:0.95rem;
-  font-family:'Inter',sans-serif;
-  outline:none;
-  transition:border-color 0.2s;
-}
-.form-group input:focus,
-.form-group textarea:focus{border-color:var(--yellow)}
-.form-group textarea{resize:vertical;min-height:110px}
-
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
   background:var(--dark);
-  border-top:1px solid rgba(255,255,255,0.06);
-  padding:32px 40px;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:16px;
+  border-top:1px solid rgba(255,255,255,0.04);
+  padding:28px 48px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
 }
-.footer-logo{font-weight:800;font-size:1rem;display:flex;align-items:center;gap:8px}
-.footer-logo .bolt{width:28px;height:28px;background:var(--yellow);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.9rem}
-footer p{font-size:0.82rem;color:var(--muted)}
+.foot-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.foot-logo-icon{
+  width:32px;height:32px;background:linear-gradient(135deg,var(--gold),#d97706);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+}
+.foot-logo-icon svg{width:16px;height:16px}
+.foot-logo span{font-size:1rem;font-weight:800;color:var(--text)}
+.foot-logo span b{color:var(--gold)}
+footer p{font-size:0.78rem;color:var(--muted2)}
 
-/* ===== DEMO BANNER ===== */
-.demo-banner{
+/* DEMO BADGE */
+.demo-badge{
   position:fixed;bottom:20px;right:20px;z-index:999;
   background:linear-gradient(135deg,#7c3aed,#2563eb);
-  color:white;
-  padding:12px 20px;
-  border-radius:12px;
-  font-size:0.82rem;font-weight:600;
-  box-shadow:0 8px 24px rgba(0,0,0,0.4);
-  border:1px solid rgba(255,255,255,0.15);
-  max-width:220px;
-  line-height:1.4;
+  color:white;padding:11px 18px;border-radius:12px;
+  font-size:0.8rem;font-weight:600;
+  box-shadow:0 8px 24px rgba(0,0,0,0.5);
+  border:1px solid rgba(255,255,255,0.12);line-height:1.4;
 }
-.demo-banner span{display:block;font-size:0.72rem;opacity:0.7;margin-top:2px}
+.demo-badge span{display:block;font-size:0.7rem;opacity:0.65;margin-top:2px}
 </style>
 </head>
 <body>
 
-<!-- Demo badge -->
-<div class="demo-banner">
-  🎨 Demo Website
-  <span>Δείγμα για Smart Electrician</span>
-</div>
+<div class="demo-badge">🎨 Demo Website<span>Δείγμα για Smart Electrician</span></div>
+
+<!-- SVG DEFS -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="ico-bolt" viewBox="0 0 24 24"><path fill="currentColor" d="M13 2L4.5 13.5H11L10 22L19.5 10.5H13L13 2Z"/></symbol>
+  <symbol id="ico-phone" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2 6.5C2 14.5 9.5 22 17.5 22l1.5-4-3.5-1.5-1.5 2c-2-.5-5-2.5-7-5.5L9 11.5 7.5 8 3.5 7 2 6.5z"/></symbol>
+  <symbol id="ico-map" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.7 2 6 4.7 6 8c0 5 6 14 6 14s6-9 6-14c0-3.3-2.7-6-6-6zm0 8a2 2 0 100-4 2 2 0 000 4z"/></symbol>
+  <symbol id="ico-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></symbol>
+  <symbol id="ico-zap" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2L4.5 13.5H11L10 22L19.5 10.5H13L13 2Z"/></symbol>
+  <symbol id="ico-check" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="ico-shield" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l8 3v6c0 5-3.5 9.5-8 11C7.5 20.5 4 16 4 11V5l8-3z"/></symbol>
+  <symbol id="ico-star" viewBox="0 0 24 24"><polygon fill="currentColor" points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></symbol>
+  <symbol id="ico-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M2 7l10 7 10-7"/></symbol>
+  <symbol id="ico-tool" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="ico-light" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 3-2 5.5-3 6.5V17H8v-1.5C7 14.5 5 12 5 9a7 7 0 017-7z"/></symbol>
+  <symbol id="ico-home" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1V10"/></symbol>
+  <symbol id="ico-camera" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.36a1 1 0 01-1.447.894L15 14M3 8h12a2 2 0 012 2v6a2 2 0 01-2 2H3a2 2 0 01-2-2v-6a2 2 0 012-2z"/></symbol>
+  <symbol id="ico-wifi" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M1.5 8.5C5.5 4.5 10.5 2.5 12 2.5s6.5 2 10.5 6M5 12c1.9-1.9 4.3-3 7-3s5.1 1.1 7 3M8.5 15.5c1-1 2.2-1.5 3.5-1.5s2.5.5 3.5 1.5M12 19h.01"/></symbol>
+</svg>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <div class="bolt">⚡</div>
-    Smart Electrician
-  </div>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24"><use href="#ico-bolt" fill="white"/></svg>
+    </div>
+    <span class="nav-logo-text">Smart <span>Electrician</span></span>
+  </a>
   <ul class="nav-links">
     <li><a href="#services">Υπηρεσίες</a></li>
     <li><a href="#why">Γιατί εμείς</a></li>
     <li><a href="#reviews">Κριτικές</a></li>
     <li><a href="#contact">Επικοινωνία</a></li>
   </ul>
-  <a href="tel:+30" class="nav-cta">📞 Καλέστε μας</a>
+  <a href="tel:+30" class="nav-cta">
+    <svg width="14" height="14" viewBox="0 0 24 24"><use href="#ico-phone" stroke="black" stroke-width="2" fill="none"/></svg>
+    Καλέστε μας
+  </a>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><span class="badge-dot"></span> Εξουσιοδοτημένοι Ηλεκτρολόγοι · Αθήνα</div>
-    <h1>Ηλεκτρολογικές<br>Εργασίες που <span class="accent">Ξεχωρίζουν</span></h1>
-    <p>Από απλές επισκευές έως ολική ανακαίνιση ηλεκτρολογικών εγκαταστάσεων — γρήγορα, άψογα και με προσιτές τιμές. Διαθέσιμοι σε όλη την Αθήνα.</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-primary">⚡ Ζητήστε Προσφορά</a>
-      <a href="#services" class="btn-secondary">Δείτε τις υπηρεσίες →</a>
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-dot">
+        <svg viewBox="0 0 24 24"><use href="#ico-bolt" fill="#f59e0b"/></svg>
+      </div>
+      <span>Εξουσιοδοτημένοι Ηλεκτρολόγοι · Αθήνα</span>
+    </div>
+    <h1>Ηλεκτρολογικές<br>Εργασίες που<br><em>Ξεχωρίζουν</em></h1>
+    <p class="hero-desc">Από απλές επισκευές έως ολική ανακαίνιση ηλεκτρολογικών εγκαταστάσεων — γρήγορα, άψογα και με προσιτές τιμές. Διαθέσιμοι σε όλη την Αθήνα.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-gold">
+        <svg width="15" height="15" viewBox="0 0 24 24"><use href="#ico-bolt" fill="black"/></svg>
+        Ζητήστε Προσφορά
+      </a>
+      <a href="#services" class="btn-ghost">Δείτε τις υπηρεσίες →</a>
     </div>
     <div class="hero-stats">
-      <div class="stat">
+      <div class="stat-item">
         <div class="stat-num">5.0★</div>
-        <div class="stat-label">Βαθμολογία Google</div>
+        <div class="stat-lbl">Βαθμολογία Google</div>
       </div>
-      <div class="stat">
+      <div class="stat-item">
         <div class="stat-num">45+</div>
-        <div class="stat-label">Κριτικές πελατών</div>
+        <div class="stat-lbl">Κριτικές πελατών</div>
       </div>
-      <div class="stat">
-        <div class="stat-num">10+</div>
-        <div class="stat-label">Χρόνια εμπειρίας</div>
+      <div class="stat-item">
+        <div class="stat-num">24h</div>
+        <div class="stat-lbl">Άμεση ανταπόκριση</div>
       </div>
     </div>
   </div>
-  <div class="hero-image">
-    <div class="electric-visual">
-      <div class="electric-inner">⚡</div>
+
+  <div class="hero-right">
+    <div class="orb-wrap">
+      <div class="orb-outer"></div>
+      <div class="orb-mid"></div>
+      <div class="orb-inner">
+        <div class="orb-icon">
+          <svg viewBox="0 0 24 24"><use href="#ico-bolt" fill="white"/></svg>
+        </div>
+      </div>
+      <div class="float-card float-card-top">
+        <div class="fc-icon">⭐</div>
+        <div>
+          <div>5.0 Google Rating</div>
+          <div class="fc-sub">45+ αξιολογήσεις</div>
+        </div>
+      </div>
+      <div class="float-card float-card-bot">
+        <div class="fc-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24"><use href="#ico-check" stroke="#f59e0b" stroke-width="2.5" fill="none"/></svg>
+        </div>
+        <div>
+          <div>Άμεση ανταπόκριση</div>
+          <div class="fc-sub">Ακόμα & Πρωτοχρονιά</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- SERVICES -->
-<section class="services-bg" id="services">
+<section class="services-wrap" id="services">
   <div class="container">
-    <div class="section-label">Υπηρεσίες</div>
-    <div class="section-title">Τι μπορούμε να κάνουμε για σας</div>
-    <div class="section-sub">Καλύπτουμε κάθε ηλεκτρολογική ανάγκη — από το μικρότερο πρόβλημα έως τις μεγαλύτερες κατασκευές.</div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🏠</div>
+    <div class="sec-tag">— Υπηρεσίες</div>
+    <div class="sec-title">Τι μπορούμε να κάνουμε<br>για σας</div>
+    <div class="sec-sub">Καλύπτουμε κάθε ηλεκτρολογική ανάγκη — από το μικρότερο πρόβλημα έως τις πιο απαιτητικές κατασκευές.</div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-card-glow"></div>
+        <div class="svc-num">01</div>
+        <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><use href="#ico-home"/></svg></div>
         <h3>Ανακαίνιση Ηλεκτρολογικών</h3>
-        <p>Ολική ή μερική ανακαίνιση της ηλεκτρολογικής εγκατάστασης του σπιτιού ή επαγγελματικού χώρου σας.</p>
+        <p>Ολική ή μερική ανακαίνιση ηλεκτρολογικής εγκατάστασης κατοικιών και επαγγελματικών χώρων.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">💡</div>
-        <h3>Φωτιστικά & Κρυφός Φωτισμός</h3>
-        <p>Εγκατάσταση φωτιστικών, LED, κρυφού φωτισμού και έξυπνων συστημάτων pencahayaan για κάθε χώρο.</p>
+      <div class="svc-card">
+        <div class="svc-card-glow"></div>
+        <div class="svc-num">02</div>
+        <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><use href="#ico-light"/></svg></div>
+        <h3>Φωτισμός & Κρυφά Φωτιστικά</h3>
+        <p>Εγκατάσταση φωτιστικών, LED strips, κρυφού φωτισμού και έξυπνων συστημάτων φωτισμού.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🔒</div>
+      <div class="svc-card">
+        <div class="svc-card-glow"></div>
+        <div class="svc-num">03</div>
+        <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><use href="#ico-shield"/></svg></div>
         <h3>Συστήματα Ασφαλείας</h3>
-        <p>Εγκατάσταση συναγερμών, καμερών, θυροτηλεφώνων και συστημάτων ελέγχου πρόσβασης.</p>
+        <p>Εγκατάσταση συναγερμών, θυροτηλεφώνου, καμερών και συστημάτων ελέγχου πρόσβασης.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">⚡</div>
+      <div class="svc-card">
+        <div class="svc-card-glow"></div>
+        <div class="svc-num">04</div>
+        <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><use href="#ico-zap"/></svg></div>
         <h3>Αλλαγή Καλωδιώσεων</h3>
-        <p>Αντικατάσταση παλαιών και επικίνδυνων καλωδιώσεων με σύγχρονα υλικά υψηλής ποιότητας.</p>
+        <p>Αντικατάσταση παλαιών καλωδιώσεων με σύγχρονα υλικά υψηλής ποιότητας και ασφάλειας.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🌿</div>
-        <h3>Εξωτερικοί Χώροι</h3>
-        <p>Φωτισμός βεράντας, κήπου, πισίνας και περιμετρικός φωτισμός για κάθε υπαίθριο χώρο.</p>
+      <div class="svc-card">
+        <div class="svc-card-glow"></div>
+        <div class="svc-num">05</div>
+        <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><use href="#ico-wifi"/></svg></div>
+        <h3>Δίκτυα & Smart Home</h3>
+        <p>Εγκατάσταση δικτύων, αυτοματισμών και έξυπνων συσκευών για σύγχρονο σπίτι ή γραφείο.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🚨</div>
+      <div class="svc-card">
+        <div class="svc-card-glow"></div>
+        <div class="svc-num">06</div>
+        <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><use href="#ico-tool"/></svg></div>
         <h3>Άμεση Επισκευή Βλαβών</h3>
-        <p>Γρήγορη ανταπόκριση σε κάθε ηλεκτρολογική βλάβη, ακόμα και τις πιο απαιτητικές περιπτώσεις.</p>
+        <p>Γρήγορη ανταπόκριση σε κάθε βλάβη, ακόμα και σε έκτακτες περιπτώσεις και αργίες.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
+<!-- WHY -->
 <section id="why">
   <div class="container">
-    <div class="why-grid">
+    <div class="why-layout">
       <div>
-        <div class="section-label">Γιατί εμείς</div>
-        <div class="section-title">Επαγγελματισμός<br>σε κάθε λεπτομέρεια</div>
-        <div class="section-sub">Χιλιάδες ευχαριστημένοι πελάτες μιλούν από μόνοι τους.</div>
-        <div class="why-list">
+        <div class="sec-tag">— Γιατί εμείς</div>
+        <div class="sec-title">Επαγγελματισμός<br>σε κάθε λεπτομέρεια</div>
+        <div class="sec-sub">Οι πελάτες μας μιλούν μόνοι τους — δεκάδες 5-αστέρων κριτικές στο Google.</div>
+        <div class="why-items">
           <div class="why-item">
-            <div class="why-icon">⚡</div>
+            <div class="wi-icon"><svg viewBox="0 0 24 24"><use href="#ico-zap"/></svg></div>
             <div>
-              <h4>Άμεση Ανταπόκριση</h4>
-              <p>Έρχόμαστε το συντομότερο δυνατό — ακόμα και παραμονή Πρωτοχρονιάς.</p>
+              <div class="wi-title">Άμεση Ανταπόκριση</div>
+              <div class="wi-desc">Έρχόμαστε το συντομότερο δυνατό — ακόμα και παραμονή Πρωτοχρονιάς ήρθαμε αμέσως.</div>
             </div>
           </div>
           <div class="why-item">
-            <div class="why-icon">💰</div>
+            <div class="wi-icon"><svg viewBox="0 0 24 24"><use href="#ico-shield"/></svg></div>
             <div>
-              <h4>Προσιτές Τιμές</h4>
-              <p>Τίμιες και διαφανείς τιμές χωρίς κρυφές χρεώσεις. Ανταγωνιστικές αμοιβές για κάθε εργασία.</p>
+              <div class="wi-title">Τιμιότητα & Εμπιστοσύνη</div>
+              <div class="wi-desc">Σας συμβουλεύουμε ειλικρινά — ακόμα και τηλεφωνικά, χωρίς να επιδιώκουμε επίσκεψη αν δεν χρειάζεται.</div>
             </div>
           </div>
           <div class="why-item">
-            <div class="why-icon">✨</div>
+            <div class="wi-icon"><svg viewBox="0 0 24 24"><use href="#ico-check"/></svg></div>
             <div>
-              <h4>Άψογη Καθαριότητα</h4>
-              <p>Δουλεύουμε με απόλυτη καθαριότητα. Φεύγουμε χωρίς να αφήνουμε ίχνος πίσω μας.</p>
+              <div class="wi-title">Άψογη Καθαριότητα</div>
+              <div class="wi-desc">Δουλεύουμε με μεγάλη προσοχή στη λεπτομέρεια. Φεύγουμε χωρίς να αφήνουμε ίχνος.</div>
             </div>
           </div>
           <div class="why-item">
-            <div class="why-icon">🤝</div>
+            <div class="wi-icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
             <div>
-              <h4>Τιμιότητα & Εμπιστοσύνη</h4>
-              <p>Σας συμβουλεύουμε ειλικρινά — ακόμα και από το τηλέφωνο, χωρίς να επιδιώκουμε επίσκεψη αν δεν χρειάζεται.</p>
+              <div class="wi-title">Προσιτές Τιμές</div>
+              <div class="wi-desc">Διαφανείς και τίμιες τιμές χωρίς εκπλήξεις. Ανταγωνιστικές αμοιβές για κάθε εργασία.</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="why-visual">
-        <div class="rating-big">
-          <div class="rating-num">5.0</div>
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <div class="rating-count">Βάσει 45+ κριτικών στο Google</div>
+      <div class="rating-panel">
+        <div class="rp-top">
+          <div class="rp-big">5.0</div>
+          <div class="rp-right">
+            <div class="rp-stars">
+              <svg viewBox="0 0 24 24"><use href="#ico-star"/></svg>
+              <svg viewBox="0 0 24 24"><use href="#ico-star"/></svg>
+              <svg viewBox="0 0 24 24"><use href="#ico-star"/></svg>
+              <svg viewBox="0 0 24 24"><use href="#ico-star"/></svg>
+              <svg viewBox="0 0 24 24"><use href="#ico-star"/></svg>
+            </div>
+            <div class="rp-count">Βάσει 45+ κριτικών στο Google</div>
+          </div>
         </div>
-        <div class="rating-bar">
-          <div class="bar-row"><span class="bar-label">5 ★</span><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><span class="bar-count">43</span></div>
-          <div class="bar-row"><span class="bar-label">4 ★</span><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div><span class="bar-count">2</span></div>
-          <div class="bar-row"><span class="bar-label">3 ★</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span class="bar-count">0</span></div>
-          <div class="bar-row"><span class="bar-label">2 ★</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span class="bar-count">0</span></div>
-          <div class="bar-row"><span class="bar-label">1 ★</span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div><span class="bar-count">1</span></div>
-        </div>
+        <div class="rp-bar-row"><span class="rp-bar-lbl">5★</span><div class="rp-track"><div class="rp-fill" style="width:95%"></div></div><span class="rp-n">43</span></div>
+        <div class="rp-bar-row"><span class="rp-bar-lbl">4★</span><div class="rp-track"><div class="rp-fill" style="width:4%"></div></div><span class="rp-n">2</span></div>
+        <div class="rp-bar-row"><span class="rp-bar-lbl">3★</span><div class="rp-track"><div class="rp-fill" style="width:0%"></div></div><span class="rp-n">0</span></div>
+        <div class="rp-bar-row"><span class="rp-bar-lbl">2★</span><div class="rp-track"><div class="rp-fill" style="width:0%"></div></div><span class="rp-n">0</span></div>
+        <div class="rp-bar-row"><span class="rp-bar-lbl">1★</span><div class="rp-track"><div class="rp-fill" style="width:2%"></div></div><span class="rp-n">1</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- REVIEWS -->
-<section class="reviews-bg" id="reviews">
+<section class="reviews-wrap" id="reviews">
   <div class="container">
-    <div class="section-label">Κριτικές Πελατών</div>
-    <div class="section-title">Τι λένε για εμάς</div>
-    <div class="section-sub">Πραγματικές κριτικές από πραγματικούς πελάτες στο Google.</div>
+    <div class="sec-tag">— Κριτικές Πελατών</div>
+    <div class="sec-title">Τι λένε για εμάς</div>
+    <div class="sec-sub">Πραγματικές κριτικές από πελάτες μας στο Google Maps.</div>
     <div class="reviews-grid">
-
-      <div class="review-card">
-        <div class="review-header">
-          <div class="reviewer-avatar">G</div>
-          <div>
-            <div class="reviewer-name">George Gkogkidis</div>
-            <div class="reviewer-meta">Τοπικός οδηγός · 29 κριτικές</div>
-          </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">G</div>
+          <div><div class="rv-name">George Gkogkidis</div><div class="rv-meta">Τοπικός οδηγός · 29 κριτικές</div></div>
         </div>
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <div class="review-text">«Φανταστικός ηλεκτρολόγος, πάντα επικοινωνιακός, με πολύ καλή δουλειά και τίμια αντιμετώπιση. <strong>Τον προτείνω σε όλους με κλειστά τα μάτια!</strong>»</div>
+        <div class="rv-stars"><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg></div>
+        <div class="rv-text">«Φανταστικός ηλεκτρολόγος, πάντα επικοινωνιακός, με πολύ καλή δουλειά και τίμια αντιμετώπιση. <strong>Τον προτείνω σε όλους με κλειστά τα μάτια!</strong>»</div>
       </div>
-
-      <div class="review-card">
-        <div class="review-header">
-          <div class="reviewer-avatar">D</div>
-          <div>
-            <div class="reviewer-name">Dwra Xristodoulou</div>
-            <div class="reviewer-meta">Τοπικός οδηγός · 21 κριτικές</div>
-          </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#6366f1,#4f46e5)">D</div>
+          <div><div class="rv-name">Dwra Xristodoulou</div><div class="rv-meta">Τοπικός οδηγός · 21 κριτικές</div></div>
         </div>
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <div class="review-text">«Ανέλαβε την ολική ανακαίνιση των ηλεκτρολογικών στο σπίτι μου και <strong>το αποτέλεσμα ήταν άψογο</strong>. Δούλεψε με συνέπεια, καθαριότητα και μεγάλη προσοχή στη λεπτομέρεια.»</div>
+        <div class="rv-stars"><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg></div>
+        <div class="rv-text">«Ανέλαβε την ολική ανακαίνιση των ηλεκτρολογικών στο σπίτι μου και <strong>το αποτέλεσμα ήταν άψογο</strong>. Δούλεψε με συνέπεια, καθαριότητα και μεγάλη προσοχή στη λεπτομέρεια.»</div>
       </div>
-
-      <div class="review-card">
-        <div class="review-header">
-          <div class="reviewer-avatar">A</div>
-          <div>
-            <div class="reviewer-name">Antonis T.</div>
-            <div class="reviewer-meta">Τοπικός οδηγός · 727 κριτικές</div>
-          </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#10b981,#059669)">A</div>
+          <div><div class="rv-name">Antonis T.</div><div class="rv-meta">Τοπικός οδηγός · 727 κριτικές</div></div>
         </div>
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <div class="review-text">«Ο ηλεκτρολόγος με βοήθησε από το τηλέφωνο χωρίς να επιδιώξει επίσκεψη. <strong>Η τιμιότητά του με κέρδισε.</strong> Θα τον προτιμήσω ανεπιφύλακτα!»</div>
+        <div class="rv-stars"><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg></div>
+        <div class="rv-text">«Με βοήθησε από το τηλέφωνο χωρίς να επιδιώξει επίσκεψη μόνο για να βγάλει χρήματα. <strong>Η τιμιότητά του με κέρδισε.</strong> Θα τον προτιμήσω ανεπιφύλακτα!»</div>
       </div>
-
-      <div class="review-card">
-        <div class="review-header">
-          <div class="reviewer-avatar">C</div>
-          <div>
-            <div class="reviewer-name">Christos Christidis</div>
-            <div class="reviewer-meta">1 αξιολόγηση</div>
-          </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#f43f5e,#e11d48)">C</div>
+          <div><div class="rv-name">Christos Christidis</div><div class="rv-meta">1 αξιολόγηση</div></div>
         </div>
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <div class="review-text">«Επαγγελματίες και τα 2 παιδιά, με το χαμόγελο. Έβαλα φωτιστικά και τραβήξαμε ρεύμα περιμετρικά σε βεράντα. Τσακ μπαμ και με πολύ όμορφο αποτέλεσμα! <strong>10/10 συστήνω!</strong>»</div>
+        <div class="rv-stars"><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg></div>
+        <div class="rv-text">«Επαγγελματίες και τα 2 παιδιά, με το χαμόγελο. Τσακ μπαμ και με πολύ όμορφο αποτέλεσμα! <strong>10/10 συστήνω!</strong>»</div>
       </div>
-
-      <div class="review-card">
-        <div class="review-header">
-          <div class="reviewer-avatar">G</div>
-          <div>
-            <div class="reviewer-name">GregBeq</div>
-            <div class="reviewer-meta">Τοπικός οδηγός · 23 κριτικές</div>
-          </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)">G</div>
+          <div><div class="rv-name">GregBeq</div><div class="rv-meta">Τοπικός οδηγός · 23 κριτικές</div></div>
         </div>
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <div class="review-text">«Τα παιδιά είναι με το χαμόγελο και έτοιμοι να σου λύσουν κάθε απορία. <strong>Είναι ό,τι καλύτερο υπάρχει αυτή τη στιγμή στην Αθήνα.</strong>»</div>
+        <div class="rv-stars"><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg></div>
+        <div class="rv-text">«Τα παιδιά είναι με το χαμόγελο και έτοιμοι να λύσουν κάθε απορία. <strong>Είναι ό,τι καλύτερο υπάρχει αυτή τη στιγμή στην Αθήνα.</strong>»</div>
       </div>
-
-      <div class="review-card">
-        <div class="review-header">
-          <div class="reviewer-avatar">M</div>
-          <div>
-            <div class="reviewer-name">marios tasos</div>
-            <div class="reviewer-meta">Τοπικός οδηγός · 8 κριτικές</div>
-          </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#0ea5e9,#0284c7)">M</div>
+          <div><div class="rv-name">marios tasos</div><div class="rv-meta">Τοπικός οδηγός · 8 κριτικές</div></div>
         </div>
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <div class="review-text">«Μου έκαναν ανακαίνιση στο εξοχικό μου — αλλαγή όλων των καλωδιώσεων, εγκατάσταση συστημάτων ασφαλείας και θυροτηλέφωνο. <strong>Απλά άψογοι!!</strong>»</div>
+        <div class="rv-stars"><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg><svg viewBox="0 0 24 24"><use href="#ico-star"/></svg></div>
+        <div class="rv-text">«Ανακαίνιση στο εξοχικό μου — αλλαγή καλωδιώσεων, εγκατάσταση συναγερμών και θυροτηλέφωνο. <strong>Απλά άψογοι!!</strong>»</div>
       </div>
-
     </div>
   </div>
 </section>
@@ -674,55 +668,40 @@ footer p{font-size:0.82rem;color:var(--muted)}
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <div class="section-label">Επικοινωνία</div>
-    <div class="section-title">Ας μιλήσουμε</div>
-    <div class="section-sub">Στείλτε μας μήνυμα ή καλέστε μας απευθείας. Απαντάμε άμεσα.</div>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div>
-            <h4>Περιοχή εξυπηρέτησης</h4>
-            <p>Αθήνα & Προάστια</p>
-          </div>
+    <div class="sec-tag">— Επικοινωνία</div>
+    <div class="sec-title">Ας μιλήσουμε</div>
+    <div class="sec-sub">Στείλτε μας μήνυμα ή καλέστε μας απευθείας. Απαντάμε άμεσα.</div>
+    <div class="contact-layout">
+      <div class="ci-items">
+        <div class="ci-item">
+          <div class="ci-icon"><svg viewBox="0 0 24 24"><use href="#ico-map"/></svg></div>
+          <div><div class="ci-label">Περιοχή εξυπηρέτησης</div><div class="ci-val">Αθήνα & Προάστια</div></div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div>
-            <h4>Τηλέφωνο</h4>
-            <p><a href="tel:+30">+30 __ ________</a></p>
-          </div>
+        <div class="ci-item">
+          <div class="ci-icon"><svg viewBox="0 0 24 24"><use href="#ico-phone"/></svg></div>
+          <div><div class="ci-label">Τηλέφωνο</div><div class="ci-val"><a href="tel:+30">+30 __ ________</a></div></div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">⏰</div>
-          <div>
-            <h4>Ώρες λειτουργίας</h4>
-            <p>Δευτ–Παρ: 08:00–20:00<br>Σάββατο: 09:00–16:00</p>
-          </div>
+        <div class="ci-item">
+          <div class="ci-icon"><svg viewBox="0 0 24 24"><use href="#ico-clock"/></svg></div>
+          <div><div class="ci-label">Ώρες λειτουργίας</div><div class="ci-val">Δευτ–Παρ 08:00–20:00<br>Σάβ 09:00–16:00</div></div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">⚡</div>
-          <div>
-            <h4>Έκτακτα περιστατικά</h4>
-            <p>Άμεση ανταπόκριση — καλέστε μας!</p>
-          </div>
+        <div class="ci-item">
+          <div class="ci-icon"><svg viewBox="0 0 24 24"><use href="#ico-zap"/></svg></div>
+          <div><div class="ci-label">Έκτακτα περιστατικά</div><div class="ci-val">Άμεση ανταπόκριση</div></div>
         </div>
       </div>
-      <div class="contact-form">
+      <div class="cf-wrap">
         <h3>Αποστολή μηνύματος</h3>
-        <div class="form-group">
-          <label>Ονοματεπώνυμο</label>
-          <input type="text" placeholder="Το όνομά σας">
+        <p class="cf-sub">Θα επικοινωνήσουμε μαζί σας εντός λίγων ωρών.</p>
+        <div class="fg-row">
+          <div class="fg"><label>Όνομα</label><input type="text" placeholder="Το όνομά σας"></div>
+          <div class="fg"><label>Τηλέφωνο</label><input type="tel" placeholder="69X XXX XXXX"></div>
         </div>
-        <div class="form-group">
-          <label>Τηλέφωνο</label>
-          <input type="tel" placeholder="69X XXX XXXX">
-        </div>
-        <div class="form-group">
-          <label>Περιγραφή εργασίας</label>
-          <textarea placeholder="Περιγράψτε τι χρειάζεστε..."></textarea>
-        </div>
-        <button class="btn-primary" style="width:100%;justify-content:center">⚡ Αποστολή Αιτήματος</button>
+        <div class="fg"><label>Περιγραφή εργασίας</label><textarea placeholder="Περιγράψτε τι χρειάζεστε..."></textarea></div>
+        <button class="btn-gold" style="width:100%;justify-content:center;font-size:0.95rem;padding:15px">
+          <svg width="15" height="15" viewBox="0 0 24 24"><use href="#ico-mail" stroke="black" stroke-width="2" fill="none"/></svg>
+          Αποστολή Αιτήματος
+        </button>
       </div>
     </div>
   </div>
@@ -730,10 +709,12 @@ footer p{font-size:0.82rem;color:var(--muted)}
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">
-    <div class="bolt">⚡</div>
-    Smart Electrician
-  </div>
+  <a href="#" class="foot-logo">
+    <div class="foot-logo-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24"><use href="#ico-bolt" fill="white"/></svg>
+    </div>
+    <span>Smart <b>Electrician</b></span>
+  </a>
   <p>© 2025 Smart Electrician · Αθήνα · Όλα τα δικαιώματα διατηρούνται</p>
 </footer>
 
