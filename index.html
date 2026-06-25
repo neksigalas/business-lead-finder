@@ -339,6 +339,7 @@
             <th>Address</th>
             <th>Phone</th>
             <th>Google Maps</th>
+            <th>Rating</th>
           </tr>
         </thead>
         <tbody id="resultsBody"></tbody>
@@ -586,6 +587,7 @@ function renderTable() {
       <td>${esc(r.addr) || '<span style="color:#aaa">—</span>'}</td>
       <td>${r.phone ? `<a href="tel:${esc(r.phone)}">${esc(r.phone)}</a>` : '<span style="color:#aaa">—</span>'}</td>
       <td><a class="map-link" href="${r.mapsUrl}" target="_blank" rel="noopener">📍 View on Maps</a></td>
+      <td><a class="map-link" href="https://www.google.com/search?q=${encodeURIComponent(r.name + ' ' + r.addr)}" target="_blank" rel="noopener">⭐ See Rating</a></td>
     </tr>`).join('');
 
   updateCount();
