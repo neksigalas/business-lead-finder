@@ -503,11 +503,8 @@ async function startSearch() {
         if (!name) return; // skip unnamed entries — useless as leads
         const addr = buildAddress(tags);
         const phone = tags.phone || tags['contact:phone'] || '';
-        const lat = el.lat ?? el.center?.lat;
-        const lon = el.lon ?? el.center?.lon;
-        const mapsUrl = lat
-          ? `https://www.google.com/maps?q=${lat},${lon}`
-          : `https://www.google.com/maps/search/${encodeURIComponent(name + ' ' + city)}`;
+        const searchQuery = [name, addr, city].filter(Boolean).join(', ');
+        const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(searchQuery)}`;
         allResults.push({ name, type: cat.label, icon: cat.icon, addr, phone, mapsUrl });
       });
     } catch(e) {
