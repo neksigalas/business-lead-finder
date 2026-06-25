@@ -195,65 +195,6 @@ nav{
 }
 .orb-icon svg{width:42px;height:42px}
 
-/* hero photo */
-.hero-photo{
-  position:relative;width:480px;height:500px;flex-shrink:0;
-}
-.hero-photo-main{
-  width:100%;height:100%;object-fit:cover;
-  border-radius:24px;
-  box-shadow:0 32px 80px rgba(0,0,0,0.6);
-  border:1px solid rgba(245,158,11,0.12);
-}
-.hero-photo-badge{
-  position:absolute;bottom:24px;left:-28px;
-  background:rgba(8,12,18,0.92);
-  border:1px solid rgba(245,158,11,0.2);
-  border-radius:14px;padding:14px 18px;
-  backdrop-filter:blur(16px);
-  box-shadow:0 8px 32px rgba(0,0,0,0.5);
-  display:flex;align-items:center;gap:12px;
-}
-.hp-badge-icon{
-  width:40px;height:40px;border-radius:10px;
-  background:linear-gradient(135deg,var(--gold),#d97706);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.hp-badge-title{font-size:0.88rem;font-weight:700}
-.hp-badge-sub{font-size:0.72rem;color:var(--muted);margin-top:2px}
-.hero-photo-mini{
-  position:absolute;top:28px;right:-24px;
-  width:130px;height:130px;object-fit:cover;
-  border-radius:16px;border:3px solid var(--dark);
-  box-shadow:0 12px 32px rgba(0,0,0,0.5);
-}
-
-/* GALLERY */
-.gallery-wrap{background:var(--dark3)}
-.gallery-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  grid-template-rows:240px 240px;
-  gap:12px;border-radius:20px;overflow:hidden;
-}
-.gallery-grid .g-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;cursor:pointer}
-.gallery-grid .g-item{overflow:hidden;position:relative}
-.gallery-grid .g-item:hover .g-img{transform:scale(1.06)}
-.gallery-grid .g-item:first-child{grid-row:span 2}
-.g-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(8,12,18,0.7) 0%,transparent 50%);
-  opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:16px;
-}
-.g-item:hover .g-overlay{opacity:1}
-.g-label{font-size:0.8rem;font-weight:600;color:var(--gold)}
-
-@media(max-width:768px){
-  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
-  .gallery-grid .g-item:first-child{grid-row:auto}
-  .gallery-grid .g-img{height:180px}
-}
-
 /* floating cards */
 .float-card{
   position:absolute;
@@ -521,20 +462,28 @@ footer p{font-size:0.78rem;color:var(--muted2)}
   </div>
 
   <div class="hero-right">
-    <div class="hero-photo">
-      <img class="hero-photo-main"
-        src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=80"
-        alt="Ηλεκτρολόγος σε εργασία" loading="eager">
-      <img class="hero-photo-mini"
-        src="https://images.unsplash.com/photo-1565363887715-2c1a2d37d37e?w=300&q=80"
-        alt="Σύγχρονος φωτισμός" loading="eager">
-      <div class="hero-photo-badge">
-        <div class="hp-badge-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24"><use href="#ico-star" fill="white"/></svg>
+    <div class="orb-wrap">
+      <div class="orb-outer"></div>
+      <div class="orb-mid"></div>
+      <div class="orb-inner">
+        <div class="orb-icon">
+          <svg viewBox="0 0 24 24"><use href="#ico-bolt" fill="white"/></svg>
+        </div>
+      </div>
+      <div class="float-card float-card-top">
+        <div class="fc-icon">⭐</div>
+        <div>
+          <div>5.0 Google Rating</div>
+          <div class="fc-sub">45+ αξιολογήσεις</div>
+        </div>
+      </div>
+      <div class="float-card float-card-bot">
+        <div class="fc-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24"><use href="#ico-check" stroke="#f59e0b" stroke-width="2.5" fill="none"/></svg>
         </div>
         <div>
-          <div class="hp-badge-title">5.0 ★ Google Rating</div>
-          <div class="hp-badge-sub">45+ αξιολογήσεις πελατών</div>
+          <div>Άμεση ανταπόκριση</div>
+          <div class="fc-sub">Ακόμα & Πρωτοχρονιά</div>
         </div>
       </div>
     </div>
@@ -589,37 +538,6 @@ footer p{font-size:0.78rem;color:var(--muted2)}
         <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><use href="#ico-tool"/></svg></div>
         <h3>Άμεση Επισκευή Βλαβών</h3>
         <p>Γρήγορη ανταπόκριση σε κάθε βλάβη, ακόμα και σε έκτακτες περιπτώσεις και αργίες.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="gallery-wrap" id="gallery">
-  <div class="container">
-    <div class="sec-tag">— Φωτογραφίες Εργασιών</div>
-    <div class="sec-title">Δείγματα από τη δουλειά μας</div>
-    <div class="sec-sub">Κάθε εγκατάσταση παραδίδεται άψογη — με καθαριότητα και προσοχή στη λεπτομέρεια.</div>
-    <div class="gallery-grid">
-      <div class="g-item">
-        <img class="g-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Ηλεκτρολογικός πίνακας">
-        <div class="g-overlay"><span class="g-label">Ηλεκτρολογικός Πίνακας</span></div>
-      </div>
-      <div class="g-item">
-        <img class="g-img" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&q=80" alt="Κρυφός φωτισμός">
-        <div class="g-overlay"><span class="g-label">Κρυφός Φωτισμός</span></div>
-      </div>
-      <div class="g-item">
-        <img class="g-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="Ηλεκτρολογικά εργαλεία">
-        <div class="g-overlay"><span class="g-label">Επαγγελματικός Εξοπλισμός</span></div>
-      </div>
-      <div class="g-item">
-        <img class="g-img" src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=600&q=80" alt="Σύγχρονος φωτισμός εσωτερικού">
-        <div class="g-overlay"><span class="g-label">Φωτισμός Εσωτερικού</span></div>
-      </div>
-      <div class="g-item">
-        <img class="g-img" src="https://images.unsplash.com/photo-1558002038-1055907df827?w=600&q=80" alt="Smart Home">
-        <div class="g-overlay"><span class="g-label">Smart Home</span></div>
       </div>
     </div>
   </div>
