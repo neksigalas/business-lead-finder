@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Website Templates — Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07090f;
+  --bg2: #0d1117;
+  --bg3: #111827;
+  --border: #1f2937;
+  --text: #f9fafb;
+  --muted: #6b7280;
+  --muted2: #9ca3af;
+  --purple: #7c3aed;
+  --purple2: #a855f7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+
+/* HEADER */
+header{padding:5rem 5% 3rem;text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(124,58,237,0.15) 0%,transparent 70%);pointer-events:none}
+.header-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);color:var(--purple2);padding:.4rem 1.1rem;border-radius:50px;font-size:.8rem;font-weight:700;margin-bottom:1.5rem;letter-spacing:.5px}
+header h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:1rem}
+header h1 em{font-style:normal;background:linear-gradient(135deg,var(--purple),var(--purple2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+header p{color:var(--muted2);font-size:1.1rem;max-width:560px;margin:0 auto 2rem;line-height:1.7}
+.header-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)}
+.header-stat .number{font-size:2rem;font-weight:900;color:var(--text)}
+.header-stat .label{font-size:.8rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+
+/* GRID */
+main{max-width:1300px;margin:0 auto;padding:0 5% 6rem}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--purple2);margin-bottom:1.5rem;margin-top:3rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+
+/* CARD */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:.3s;position:relative}
+.card:hover{border-color:rgba(124,58,237,0.4);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.4)}
+.card-header{padding:1.75rem 1.75rem 1.25rem;position:relative}
+.card-swatch{width:100%;height:8px;border-radius:4px;margin-bottom:1.5rem}
+.card-icon{font-size:2.5rem;margin-bottom:.875rem;display:block}
+.card-title{font-size:1.1rem;font-weight:900;margin-bottom:.35rem;letter-spacing:-.3px}
+.card-category{font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.875rem}
+.card-desc{font-size:.875rem;color:var(--muted2);line-height:1.6;margin-bottom:1.25rem}
+.card-colors{display:flex;align-items:center;gap:.5rem;margin-bottom:1.5rem}
+.color-dot{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,0.1);flex-shrink:0}
+.color-label{font-size:.75rem;color:var(--muted);font-family:monospace}
+.card-footer{padding:1rem 1.75rem 1.5rem;border-top:1px solid var(--border);display:flex;gap:.75rem;align-items:center}
+.btn-preview{flex:1;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;padding:.6rem 1rem;border-radius:8px;font-weight:700;font-size:.85rem;text-decoration:none;text-align:center;transition:.2s}
+.btn-preview:hover{opacity:.9;transform:translateY(-1px)}
+.btn-code{background:var(--bg3);border:1px solid var(--border);color:var(--muted2);padding:.6rem 1rem;border-radius:8px;font-weight:600;font-size:.85rem;text-decoration:none;text-align:center;transition:.2s;white-space:nowrap}
+.btn-code:hover{border-color:var(--purple);color:var(--purple2)}
+.card-tag{position:absolute;top:1.25rem;right:1.25rem;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.25);color:var(--purple2);padding:.25rem .65rem;border-radius:50px;font-size:.7rem;font-weight:700;letter-spacing:.5px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:3rem 5%;text-align:center}
+.footer-inner{max-width:1200px;margin:0 auto}
+footer h3{font-size:1.25rem;font-weight:900;margin-bottom:.5rem}
+footer p{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem}
+.footer-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.footer-links a{color:var(--muted2);font-size:.875rem;text-decoration:none;transition:.2s}
+.footer-links a:hover{color:var(--purple2)}
+.footer-copy{margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border);color:var(--muted);font-size:.82rem}
+
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.grid{grid-template-columns:1fr}.header-stats{gap:1.5rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-badge">⚡ Premium Template Collection</div>
+  <h1>9 Premium<br><em>Business Templates</em></h1>
+  <p>Beautiful, conversion-optimised website templates for local businesses. Each with unique design, full placeholder support, and mobile-ready layouts.</p>
+  <div class="header-stats">
+    <div class="header-stat"><div class="number">9</div><div class="label">Templates</div></div>
+    <div class="header-stat"><div class="number">30+</div><div class="label">Placeholders</div></div>
+    <div class="header-stat"><div class="number">100%</div><div class="label">Responsive</div></div>
+    <div class="header-stat"><div class="number">0</div><div class="label">Dependencies</div></div>
+  </div>
+</header>
+
+<main>
+  <div class="section-label">All Templates</div>
+  <div class="grid">
+
+    <!-- Electrician -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-swatch" style="background:linear-gradient(90deg,#080c12,#f59e0b)"></div>
+        <div class="card-tag">Dark Theme</div>
+        <span class="card-icon">⚡</span>
+        <div class="card-title">Electrician</div>
+        <div class="card-category">Home Services · Trades</div>
+        <p class="card-desc">Dark techy aesthetic with amber accents. Animated grid hero, floating badge, service cards with accent border reveal on hover.</p>
+        <div class="card-colors">
+          <div class="color-dot" style="background:#080c12"></div>
+          <div class="color-dot" style="background:#f59e0b"></div>
+          <div class="color-dot" style="background:#fbbf24"></div>
+          <span class="color-label">#080c12 · #f59e0b</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="electrician.html" class="btn-preview" target="_blank">👁 Preview</a>
+        <a href="electrician.html" class="btn-code" target="_blank">Open →</a>
+      </div>
+    </div>
+
+    <!-- Plumber -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-swatch" style="background:linear-gradient(90deg,#0a1628,#0ea5e9)"></div>
+        <div class="card-tag">Light Theme</div>
+        <span class="card-icon">🔧</span>
+        <div class="card-title">Plumber</div>
+        <div class="card-category">Home Services · Trades</div>
+        <p class="card-desc">Clean navy + cyan on white. Two-column hero with trust-stats panel, wave decoration, dot-pattern background on dark hero.</p>
+        <div class="card-colors">
+          <div class="color-dot" style="background:#0a1628"></div>
+          <div class="color-dot" style="background:#0ea5e9"></div>
+          <div class="color-dot" style="background:#ffffff"></div>
+          <span class="color-label">#0a1628 · #0ea5e9</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="plumber.html" class="btn-preview" target="_blank">👁 Preview</a>
+        <a href="plumber.html" class="btn-code" target="_blank">Open →</a>
+      </div>
+    </div>
+
+    <!-- Restaurant -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-swatch" style="background:linear-gradient(90deg,#0d0905,#d97706,#fef3c7)"></div>
+        <div class="card-tag">Dark Theme</div>
+        <span class="card-icon">🍽️</span>
+        <div class="card-title">Restaurant</div>
+        <div class="card-category">Food &amp; Hospitality</div>
+        <p class="card-desc">Deep dark with warm amber and cream. Elegant centred hero with large italic tagline, ornamental dividers, and a refined grid menu.</p>
+        <div class="card-colors">
+          <div class="color-dot" style="background:#0d0905"></div>
+          <div class="color-dot" style="background:#d97706"></div>
+          <div class="color-dot" style="background:#fef3c7"></div>
+          <span class="color-label">#0d0905 · #d97706</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="restaurant.html" class="btn-preview" target="_blank">👁 Preview</a>
+        <a href="restaurant.html" class="btn-code" target="_blank">Open →</a>
+      </div>
+    </div>
+
+    <!-- Hairdresser -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-swatch" style="background:linear-gradient(90deg,#1a0a12,#ec4899,#fce7f3)"></div>
+        <div class="card-tag">Light Theme</div>
+        <span class="card-icon">✂️</span>
+        <div class="card-title">Hairdresser</div>
+        <div class="card-category">Beauty &amp; Wellness</div>
+        <p class="card-desc">Soft white with rose pink accents. Animated blob visual in hero, rounded pill buttons, floating stat badge, premium feminine aesthetic.</p>
+        <div class="card-colors">
+          <div class="color-dot" style="background:#1a0a12"></div>
+          <div class="color-dot" style="background:#ec4899"></div>
+          <div class="color-dot" style="background:#fce7f3"></div>
+          <span class="color-label">#1a0a12 · #ec4899</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="hairdresser.html" class="btn-preview" target="_blank">👁 Preview</a>
+        <a href="hairdresser.html" class="btn-code" target="_blank">Open →</a>
+      </div>
+    </div>
+
+    <!-- Lawyer -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-swatch" style="background:linear-gradient(90deg,#070d1a,#c9a84c,#f8f2e4)"></div>
+        <div class="card-tag">Dark Theme</div>
+        <span class="card-icon">⚖️</span>
+        <div class="card-title">Lawyer</div>
+        <div class="card-category">Professional Services</div>
+        <p class="card-desc">Very dark navy with deep gold and cream white. Eyebrow lines, uppercase typography, slim grid layout with left-border hover effect.</p>
+        <div class="card-colors">
+          <div class="color-dot" style="background:#070d1a"></div>
+          <div class="color-dot" style="background:#c9a84c"></div>
+          <div class="color-dot" style="background:#f8f2e4"></div>
+          <span class="color-label">#070d1a · #c9a84c</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="lawyer.html" class="btn-preview" target="_blank">👁 Preview</a>
+        <a href="lawyer.html" class="btn-code" target="_blank">Open →</a>
+      </div>
+    </div>
+
+    <!-- Gym -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-swatch" style="background:linear-gradient(90deg,#000000,#ef4444,#ffffff)"></div>
+        <div class="card-tag">Dark Theme</div>
+        <span class="card-icon">💪</span>
+        <div class="card-title">Gym</div>
+        <div class="card-category">Fitness &amp; Sport</div>
+        <p class="card-desc">Pure black + electric red. Aggressive clipped-polygon buttons, massive hero typography, stats strip, red-slash vertical accent, bold uppercase everywhere.</p>
+        <div class="card-colors">
+          <div class="color-dot" style="background:#000000"></div>
+          <div class="color-dot" style="background:#ef4444"></div>
+          <div class="color-dot" style="background:#ffffff"></div>
+          <span class="color-label">#000000 · #ef4444</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="gym.html" class="btn-preview" target="_blank">👁 Preview</a>
+        <a href="gym.html" class="btn-code" target="_blank">Open →</a>
+      </div>
+    </div>
+
+    <!-- Dentist -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-swatch" style="background:linear-gradient(90deg,#ffffff,#0d9488,#e0f2fe)"></div>
+        <div class="card-tag">Light Theme</div>
+        <span class="card-icon">🦷</span>
+        <div class="card-title">Dentist</div>
+        <div class="card-category">Healthcare &amp; Medical</div>
+        <p class="card-desc">Pure white, mint teal and light blue. Clean medical feel with trust cards in hero, soft gradient background, rounded cards with teal hover glow.</p>
+        <div class="card-colors">
+          <div class="color-dot" style="background:#ffffff;border:1px solid #ccc"></div>
+          <div class="color-dot" style="background:#0d9488"></div>
+          <div class="color-dot" style="background:#e0f2fe"></div>
+          <span class="color-label">#ffffff · #0d9488</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="dentist.html" class="btn-preview" target="_blank">👁 Preview</a>
+        <a href="dentist.html" class="btn-code" target="_blank">Open →</a>
+      </div>
+    </div>
+
+    <!-- Bakery -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-swatch" style="background:linear-gradient(90deg,#fdf6ec,#92400e,#d97706)"></div>
+        <div class="card-tag">Warm Theme</div>
+        <span class="card-icon">🥐</span>
+        <div class="card-title">Bakery</div>
+        <div class="card-category">Food &amp; Hospitality</div>
+        <p class="card-desc">Warm cream with rich brown and golden accents. Cosy artisanal feel with floating animated hero visual, dot pattern, and italic serif-style branding.</p>
+        <div class="card-colors">
+          <div class="color-dot" style="background:#fdf6ec"></div>
+          <div class="color-dot" style="background:#92400e"></div>
+          <div class="color-dot" style="background:#d97706"></div>
+          <span class="color-label">#fdf6ec · #92400e</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="bakery.html" class="btn-preview" target="_blank">👁 Preview</a>
+        <a href="bakery.html" class="btn-code" target="_blank">Open →</a>
+      </div>
+    </div>
+
+    <!-- Landscaper -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-swatch" style="background:linear-gradient(90deg,#ffffff,#15803d,#92400e)"></div>
+        <div class="card-tag">Light Theme</div>
+        <span class="card-icon">🌿</span>
+        <div class="card-title">Landscaper</div>
+        <div class="card-category">Home &amp; Garden</div>
+        <p class="card-desc">Clean white with forest green and earthy brown. Natural fresh feel with dot grid hero, arc section transition, stat cards, and green gradient footer.</p>
+        <div class="card-colors">
+          <div class="color-dot" style="background:#ffffff;border:1px solid #ccc"></div>
+          <div class="color-dot" style="background:#15803d"></div>
+          <div class="color-dot" style="background:#92400e"></div>
+          <span class="color-label">#ffffff · #15803d</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="landscaper.html" class="btn-preview" target="_blank">👁 Preview</a>
+        <a href="landscaper.html" class="btn-code" target="_blank">Open →</a>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
+
+  <!-- Placeholder reference -->
+  <div style="margin-top:4rem;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2rem">
+    <div class="section-label" style="margin-top:0">Placeholder Reference</div>
+    <p style="color:var(--muted2);font-size:.875rem;margin-bottom:1.5rem">All templates use these <code style="background:var(--bg3);padding:.2rem .4rem;border-radius:4px;font-size:.8rem;color:var(--purple2)">{{PLACEHOLDER}}</code> variables for dynamic content injection.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.5rem">
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{BUSINESS_NAME}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{PHONE}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{ADDRESS}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{CITY}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{RATING}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{REVIEW_COUNT}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{HOURS}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{TAGLINE}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{SERVICE_1}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{SERVICE_2}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{SERVICE_3}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{SERVICE_4}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{SERVICE_5}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{SERVICE_6}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{REVIEW_1_NAME}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{REVIEW_1_TEXT}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{REVIEW_2_NAME}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{REVIEW_2_TEXT}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{REVIEW_3_NAME}}</code>
+      <code style="background:var(--bg3);border:1px solid var(--border);padding:.4rem .75rem;border-radius:6px;font-size:.78rem;color:var(--muted2)">{{REVIEW_3_TEXT}}</code>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h3>9 Premium Business Templates</h3>
+    <p>Ready to deploy. Replace placeholders with real business data and go live.</p>
+    <div class="footer-links">
+      <a href="electrician.html" target="_blank">⚡ Electrician</a>
+      <a href="plumber.html" target="_blank">🔧 Plumber</a>
+      <a href="restaurant.html" target="_blank">🍽️ Restaurant</a>
+      <a href="hairdresser.html" target="_blank">✂️ Hairdresser</a>
+      <a href="lawyer.html" target="_blank">⚖️ Lawyer</a>
+      <a href="gym.html" target="_blank">💪 Gym</a>
+      <a href="dentist.html" target="_blank">🦷 Dentist</a>
+      <a href="bakery.html" target="_blank">🥐 Bakery</a>
+      <a href="landscaper.html" target="_blank">🌿 Landscaper</a>
+    </div>
+    <div class="footer-copy">© 2024 · Business Lead Finder · All templates include {{PLACEHOLDER}} variable support</div>
+  </div>
+</footer>
+
+</body>
+</html>

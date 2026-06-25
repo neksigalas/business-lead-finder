@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — Gym in {{CITY}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #000000;
+  --bg2: #0a0a0a;
+  --bg3: #111111;
+  --red: #ef4444;
+  --red2: #f87171;
+  --red3: #1a0505;
+  --white: #ffffff;
+  --text: #ffffff;
+  --muted: #888888;
+  --border: #1a1a1a;
+  --card: #0d0d0d;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(0,0,0,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-size:1.4rem;font-weight:900;color:var(--white);letter-spacing:-1px;text-transform:uppercase}
+.logo span{color:var(--red)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:.2s}
+.nav-links a:hover{color:var(--red)}
+.nav-cta{background:var(--red);color:#fff;padding:.5rem 1.5rem;font-weight:900;font-size:.85rem;text-decoration:none;transition:.2s;letter-spacing:1px;text-transform:uppercase;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)}
+.nav-cta:hover{background:var(--red2)}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:0 5%}
+.hero-bg{position:absolute;inset:0;background:#000}
+.hero-red{position:absolute;top:0;right:0;width:55%;height:100%;background:linear-gradient(135deg,transparent 30%,rgba(239,68,68,0.06) 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(239,68,68,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(239,68,68,0.04) 1px,transparent 1px);background-size:50px 50px}
+.hero-slash{position:absolute;top:0;left:45%;width:4px;height:100%;background:linear-gradient(180deg,transparent,var(--red),transparent);opacity:.3}
+.hero-content{max-width:1280px;margin:0 auto;position:relative;z-index:1;padding-top:70px}
+.hero-number{font-size:clamp(8rem,20vw,18rem);font-weight:900;line-height:.85;color:rgba(255,255,255,0.03);position:absolute;top:50%;left:-2%;transform:translateY(-50%);pointer-events:none;letter-spacing:-10px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--red);color:#fff;padding:.4rem 1rem;font-size:.75rem;font-weight:900;margin-bottom:1.5rem;letter-spacing:2px;text-transform:uppercase;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
+.hero h1{font-size:clamp(3rem,8vw,7rem);font-weight:900;line-height:.9;letter-spacing:-4px;margin-bottom:1.5rem;text-transform:uppercase}
+.hero h1 .line2{color:var(--red);display:block}
+.hero h1 .line3{color:rgba(255,255,255,0.2);display:block;font-size:.45em;letter-spacing:-1px;margin-top:.5rem}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:500px;margin-bottom:2rem;font-weight:400}
+.hero-rating{display:flex;align-items:center;gap:.75rem;margin-bottom:2.5rem}
+.stars{color:var(--red);font-size:1rem;letter-spacing:2px}
+.rating-text{color:var(--muted);font-size:.85rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--red);color:#fff;padding:.9rem 2.5rem;font-weight:900;font-size:1rem;text-decoration:none;transition:.2s;letter-spacing:1px;text-transform:uppercase;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%)}
+.btn-primary:hover{background:var(--red2);transform:translateY(-2px)}
+.btn-secondary{border:2px solid rgba(255,255,255,0.15);color:#fff;padding:.9rem 2.5rem;font-weight:700;font-size:1rem;text-decoration:none;transition:.2s;letter-spacing:1px;text-transform:uppercase}
+.btn-secondary:hover{border-color:var(--red);color:var(--red)}
+.hero-stats{display:flex;gap:3rem;margin-top:3rem;padding-top:3rem;border-top:1px solid var(--border)}
+.hero-stat-item .number{font-size:2.5rem;font-weight:900;color:var(--white);line-height:1}
+.hero-stat-item .label{font-size:.75rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:.25rem}
+
+section{padding:5.5rem 5%}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-tag{font-size:.7rem;font-weight:900;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:.75rem}
+.section-title{font-size:clamp(2rem,5vw,4rem);font-weight:900;letter-spacing:-2px;margin-bottom:1rem;text-transform:uppercase;line-height:.95}
+.section-desc{color:var(--muted);max-width:520px;margin-bottom:3rem}
+
+.services{background:var(--bg2)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1px;background:var(--border)}
+.service-card{background:var(--card);padding:2rem;transition:.3s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transition:.3s;transform-origin:left}
+.service-card:hover{background:var(--bg3)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{font-size:2.2rem;margin-bottom:1.25rem;display:block}
+.service-card h3{font-size:1rem;font-weight:900;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.625rem;color:var(--white)}
+.service-card p{color:var(--muted);font-size:.875rem;line-height:1.7}
+
+.why{background:var(--bg3)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2rem;margin-top:3rem}
+.why-item{border:1px solid var(--border);padding:2rem;transition:.3s;position:relative}
+.why-item::after{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--red);opacity:0;transition:.3s}
+.why-item:hover{border-color:rgba(239,68,68,0.3)}
+.why-item:hover::after{opacity:1}
+.why-icon{font-size:2rem;margin-bottom:1rem}
+.why-item h3{font-weight:900;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.5px;font-size:.95rem}
+.why-item p{color:var(--muted);font-size:.875rem;line-height:1.7}
+
+.reviews{background:var(--bg2)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.review-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--red);padding:2rem}
+.review-stars{color:var(--red);font-size:.9rem;letter-spacing:3px;margin-bottom:1.25rem}
+.review-text{color:var(--muted);font-size:.925rem;margin-bottom:1.5rem;font-style:italic;line-height:1.8}
+.reviewer{display:flex;align-items:center;gap:.875rem}
+.avatar{width:44px;height:44px;background:var(--red);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;color:#fff;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
+.reviewer-info .name{font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.5px}
+.reviewer-info .city{color:var(--muted);font-size:.8rem}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}
+.contact-info h3{font-size:1.2rem;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.75rem}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.contact-item:last-child{border-bottom:none}
+.contact-item .icon{font-size:1.3rem}
+.contact-item strong{display:block;font-weight:900;letter-spacing:.5px;text-transform:uppercase;font-size:.8rem;margin-bottom:.2rem}
+.contact-item span{color:var(--muted);font-size:.9rem}
+form{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--red);padding:2.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.75rem;font-weight:900;margin-bottom:.5rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--bg);border:1px solid var(--border);padding:.75rem 1rem;color:var(--text);font-family:inherit;font-size:.9rem;transition:.2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--red)}
+.form-group textarea{height:110px;resize:vertical}
+.btn-submit{width:100%;background:var(--red);color:#fff;border:none;padding:.9rem;font-weight:900;font-size:.95rem;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:2px;text-transform:uppercase;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%)}
+.btn-submit:hover{background:var(--red2)}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5%}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-size:1.2rem;font-weight:900;text-transform:uppercase;letter-spacing:-1px}
+.footer-logo span{color:var(--red)}
+.footer-text{color:var(--muted);font-size:.8rem}
+
+.demo-badge{position:fixed;bottom:1.5rem;right:1.5rem;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;padding:.5rem 1rem;border-radius:50px;font-size:.75rem;font-weight:700;z-index:999;box-shadow:0 4px 20px rgba(124,58,237,0.4)}
+
+@media(max-width:768px){.nav-links{display:none}.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.hero-stats{gap:1.5rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">{{BUSINESS_NAME}} <span>GYM</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Training</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#reviews">Results</a></li>
+      <li><a href="#contact">Join</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Join Now</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-red"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-slash"></div>
+  <div class="hero-content">
+    <div class="hero-number">01</div>
+    <div class="hero-badge">🔥 {{CITY}}'s Premier Gym</div>
+    <h1>Train Hard.<span class="line2">Live Strong.</span><span class="line3">{{BUSINESS_NAME}} · {{CITY}}</span></h1>
+    <p class="hero-sub">{{TAGLINE}} — elite training facilities, expert coaches, and a community that pushes you to be your best.</p>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span class="rating-text">{{RATING}} rating · {{REVIEW_COUNT}} members</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Start Today</a>
+      <a href="tel:{{PHONE}}" class="btn-secondary">📞 {{PHONE}}</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat-item"><div class="number">{{REVIEW_COUNT}}+</div><div class="label">Members</div></div>
+      <div class="hero-stat-item"><div class="number">{{RATING}}★</div><div class="label">Rated</div></div>
+      <div class="hero-stat-item"><div class="number">24/7</div><div class="label">Access</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="section-inner">
+    <div class="section-tag">Training Programs</div>
+    <h2 class="section-title">What We<br>Offer</h2>
+    <p class="section-desc">World-class facilities and expert-led programs for every fitness level in {{CITY}}.</p>
+    <div class="services-grid">
+      <div class="service-card"><span class="service-icon">💪</span><h3>{{SERVICE_1}}</h3><p>State-of-the-art equipment and expert guidance for maximum strength and muscle gains.</p></div>
+      <div class="service-card"><span class="service-icon">🏋️</span><h3>{{SERVICE_2}}</h3><p>High-intensity group classes that burn calories, build endurance, and ignite your competitive spirit.</p></div>
+      <div class="service-card"><span class="service-icon">🥊</span><h3>{{SERVICE_3}}</h3><p>Combat sports and martial arts training for fitness, confidence, and self-defence.</p></div>
+      <div class="service-card"><span class="service-icon">🧘</span><h3>{{SERVICE_4}}</h3><p>Recovery, mobility, and mind-body programs to keep you training at your peak.</p></div>
+      <div class="service-card"><span class="service-icon">🎯</span><h3>{{SERVICE_5}}</h3><p>One-on-one coaching tailored to your specific goals, schedule, and fitness level.</p></div>
+      <div class="service-card"><span class="service-icon">🥗</span><h3>{{SERVICE_6}}</h3><p>Expert nutrition planning and supplement guidance to fuel your performance and recovery.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="why">
+  <div class="section-inner">
+    <div class="section-tag">The Difference</div>
+    <h2 class="section-title">Why {{BUSINESS_NAME}}</h2>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-icon">🏆</div><h3>Elite Equipment</h3><p>The latest, highest-quality training equipment maintained to the highest standards.</p></div>
+      <div class="why-item"><div class="why-icon">👊</div><h3>Expert Coaches</h3><p>Certified personal trainers and coaches who are passionate about your success.</p></div>
+      <div class="why-item"><div class="why-icon">🔥</div><h3>Real Community</h3><p>Join a tribe of motivated individuals who support and push each other to new heights.</p></div>
+      <div class="why-item"><div class="why-icon">⏰</div><h3>Open 24/7</h3><p>Train on your schedule. Our doors are always open because your goals don't wait.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="section-inner">
+    <div class="section-tag">Member Results</div>
+    <h2 class="section-title">Real Results.<br>Real People.</h2>
+    <p class="section-desc">{{RATING}} stars from {{REVIEW_COUNT}} members. Their transformation is our mission.</p>
+    <div class="reviews-grid">
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_1_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_1_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_1_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_2_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_2_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_2_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_3_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_3_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_3_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Join Now</div>
+    <h2 class="section-title">Start Your<br>Journey</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>{{BUSINESS_NAME}}</h3>
+        <div class="contact-item"><div class="icon">📞</div><div><strong>Phone</strong><span>{{PHONE}}</span></div></div>
+        <div class="contact-item"><div class="icon">📍</div><div><strong>Location</strong><span>{{ADDRESS}}, {{CITY}}</span></div></div>
+        <div class="contact-item"><div class="icon">⏰</div><div><strong>Hours</strong><span>{{HOURS}}</span></div></div>
+        <div class="contact-item"><div class="icon">🎁</div><div><strong>Free Trial</strong><span>First week free for new members</span></div></div>
+      </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+          <div class="form-group"><label>Phone</label><input type="tel" placeholder="Your number"></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Interested In</label><select><option>{{SERVICE_1}}</option><option>{{SERVICE_2}}</option><option>{{SERVICE_3}}</option><option>{{SERVICE_4}}</option><option>{{SERVICE_5}}</option><option>{{SERVICE_6}}</option></select></div>
+        <div class="form-group"><label>Your Goal</label><textarea placeholder="Tell us what you want to achieve..."></textarea></div>
+        <button type="submit" class="btn-submit">🔥 Claim Free Trial</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">{{BUSINESS_NAME}} <span>GYM</span></div>
+    <div class="footer-text">© 2024 {{BUSINESS_NAME}} · {{ADDRESS}}, {{CITY}} · {{PHONE}}</div>
+    <div class="footer-text" style="color:var(--red)">{{RATING}}★ · {{REVIEW_COUNT}} Members</div>
+  </div>
+</footer>
+
+<div class="demo-badge">🌐 Demo Website</div>
+</body>
+</html>

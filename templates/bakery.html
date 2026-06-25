@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — Bakery in {{CITY}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fdf6ec;
+  --bg2: #fef9f0;
+  --bg3: #fff8ed;
+  --brown: #92400e;
+  --brown2: #b45309;
+  --golden: #d97706;
+  --golden2: #f59e0b;
+  --cream: #fdf6ec;
+  --warm: #78350f;
+  --text: #1c0f00;
+  --muted: #92704a;
+  --border: #e8d5b7;
+  --card: #fffbf5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,246,236,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-size:1.2rem;font-weight:900;color:var(--brown);letter-spacing:-.5px}
+.logo em{font-style:italic;color:var(--golden)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--brown)}
+.nav-cta{background:var(--brown);color:#fff;padding:.5rem 1.25rem;border-radius:6px;font-weight:700;font-size:.85rem;text-decoration:none;transition:.2s}
+.nav-cta:hover{background:var(--brown2)}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:0 5%;background:linear-gradient(160deg,#fdf6ec 0%,#fef0d6 50%,#fde8c0 100%)}
+.hero-pattern{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(146,64,14,0.05) 1.5px,transparent 1.5px);background-size:30px 30px}
+.hero-blob1{position:absolute;top:-100px;right:-80px;width:450px;height:450px;background:radial-gradient(circle,rgba(217,119,6,0.12) 0%,transparent 70%);border-radius:50%}
+.hero-blob2{position:absolute;bottom:-100px;left:-60px;width:350px;height:350px;background:radial-gradient(circle,rgba(146,64,14,0.08) 0%,transparent 70%);border-radius:50%}
+.hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:1;padding-top:68px;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(146,64,14,0.1);border:1px solid rgba(146,64,14,0.2);color:var(--brown);padding:.4rem 1rem;border-radius:50px;font-size:.8rem;font-weight:700;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--warm);margin-bottom:1rem}
+.hero h1 em{font-style:italic;color:var(--golden);display:block;font-size:.7em;font-weight:300;letter-spacing:0}
+.hero-sub{color:var(--muted);max-width:440px;margin-bottom:1.5rem;font-size:1.05rem;line-height:1.8}
+.hero-rating{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
+.stars{color:var(--golden);font-size:1rem;letter-spacing:1px}
+.rating-text{color:var(--muted);font-size:.85rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--brown);color:#fff;padding:.875rem 2rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;transition:.2s}
+.btn-primary:hover{background:var(--brown2);transform:translateY(-2px)}
+.btn-secondary{border:2px solid var(--border);color:var(--brown);padding:.875rem 2rem;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;transition:.2s}
+.btn-secondary:hover{border-color:var(--brown);background:rgba(146,64,14,0.05)}
+.hero-phone{display:flex;align-items:center;gap:.75rem;margin-top:2rem}
+.hero-phone a{color:var(--brown);font-size:1.1rem;font-weight:700;text-decoration:none}
+.hero-visual{display:flex;justify-content:center;align-items:center;padding-top:68px}
+.hero-showcase{width:360px;height:400px;background:linear-gradient(145deg,#fff8ed,#fde8c0);border-radius:40% 60% 50% 50%/50% 40% 60% 50%;display:flex;align-items:center;justify-content:center;font-size:7rem;box-shadow:0 20px 60px rgba(146,64,14,0.15);animation:float 5s ease-in-out infinite;border:2px solid rgba(217,119,6,0.15)}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+.fresh-badge{background:#fff;border:1px solid var(--border);border-radius:12px;padding:.75rem 1.25rem;box-shadow:0 4px 20px rgba(0,0,0,.06);font-size:.85rem;font-weight:700;color:var(--brown);margin-top:1.5rem;text-align:center}
+.fresh-badge span{color:var(--golden)}
+
+section{padding:5rem 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--golden);margin-bottom:.75rem}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-1px;margin-bottom:.75rem;color:var(--warm)}
+.section-divider{width:40px;height:3px;background:var(--golden);border-radius:2px;margin-bottom:1.5rem;opacity:.7}
+.section-desc{color:var(--muted);max-width:520px;margin-bottom:3rem;line-height:1.8}
+
+.menu{background:var(--bg2)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.5rem}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:.3s}
+.service-card:hover{border-color:rgba(217,119,6,0.4);box-shadow:0 8px 30px rgba(146,64,14,0.08);transform:translateY(-4px)}
+.service-icon{font-size:2rem;margin-bottom:1rem}
+.service-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--warm)}
+.service-card p{color:var(--muted);font-size:.875rem;line-height:1.7}
+
+.why{background:var(--bg3)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem;margin-top:3rem}
+.why-item{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center;transition:.3s}
+.why-item:hover{border-color:rgba(217,119,6,0.4)}
+.why-icon{font-size:2.2rem;margin-bottom:1rem}
+.why-item h3{font-weight:700;margin-bottom:.5rem;color:var(--warm)}
+.why-item p{color:var(--muted);font-size:.875rem;line-height:1.7}
+
+.reviews{background:var(--bg2)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.review-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem}
+.review-stars{color:var(--golden);font-size:1rem;letter-spacing:2px;margin-bottom:1rem}
+.review-text{color:var(--muted);font-size:.925rem;margin-bottom:1.5rem;font-style:italic;line-height:1.8}
+.reviewer{display:flex;align-items:center;gap:.75rem}
+.avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--golden),var(--brown));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff}
+.reviewer-info .name{font-weight:600;font-size:.9rem;color:var(--warm)}
+.reviewer-info .city{color:var(--muted);font-size:.8rem}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}
+.contact-info h3{font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;color:var(--warm)}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+.contact-item .icon{width:44px;height:44px;background:rgba(146,64,14,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;border:1px solid var(--border)}
+.contact-item strong{display:block;font-weight:600;margin-bottom:.2rem;color:var(--warm)}
+.contact-item span{color:var(--muted);font-size:.9rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--muted)}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:.7rem 1rem;color:var(--text);font-family:inherit;font-size:.9rem;transition:.2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--golden);box-shadow:0 0 0 3px rgba(217,119,6,0.1)}
+.form-group textarea{height:110px;resize:vertical}
+.btn-submit{width:100%;background:var(--brown);color:#fff;border:none;padding:.875rem;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer;transition:.2s;font-family:inherit}
+.btn-submit:hover{background:var(--brown2)}
+
+footer{background:var(--warm);padding:3rem 5%}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-size:1.1rem;font-weight:900;color:#fff}
+.footer-logo em{color:var(--golden2);font-style:italic}
+.footer-text{color:rgba(255,255,255,0.5);font-size:.82rem}
+
+.demo-badge{position:fixed;bottom:1.5rem;right:1.5rem;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;padding:.5rem 1rem;border-radius:50px;font-size:.75rem;font-weight:700;z-index:999;box-shadow:0 4px 20px rgba(124,58,237,0.4)}
+
+@media(max-width:900px){.hero-content{grid-template-columns:1fr}.hero-visual{display:none}}
+@media(max-width:768px){.nav-links{display:none}.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">🥐 <em>{{BUSINESS_NAME}}</em></div>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#why">Our Story</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Order</a></li>
+    </ul>
+    <a href="tel:{{PHONE}}" class="nav-cta">📞 {{PHONE}}</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-blob1"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge">🌾 Artisan Bakery · {{CITY}}</div>
+      <h1>Fresh Baked<br>with Love<em>Since {{CITY}}</em></h1>
+      <p class="hero-sub">{{TAGLINE}} — handcrafted breads, pastries, and cakes baked fresh every morning in {{CITY}}.</p>
+      <div class="hero-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-text">{{RATING}} · {{REVIEW_COUNT}} happy customers</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#menu" class="btn-primary">See Our Menu</a>
+        <a href="#contact" class="btn-secondary">Order Custom</a>
+      </div>
+      <div class="hero-phone">
+        <span>📞</span>
+        <a href="tel:{{PHONE}}">{{PHONE}}</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div>
+        <div class="hero-showcase">🥐</div>
+        <div class="fresh-badge">🌅 Baked Fresh Daily · Open <span>{{HOURS}}</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="menu">
+  <div class="section-inner">
+    <div class="section-tag">Our Bakes</div>
+    <h2 class="section-title">Freshly Baked Daily</h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">Every item at {{BUSINESS_NAME}} is made by hand from the finest ingredients, baked fresh each morning in {{CITY}}.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">🍞</div><h3>{{SERVICE_1}}</h3><p>Artisan breads crafted with traditional techniques, slow-fermented for incredible flavour and texture.</p></div>
+      <div class="service-card"><div class="service-icon">🥐</div><h3>{{SERVICE_2}}</h3><p>Buttery, flaky pastries made fresh every morning — croissants, pain au chocolat, and seasonal specials.</p></div>
+      <div class="service-card"><div class="service-icon">🎂</div><h3>{{SERVICE_3}}</h3><p>Stunning custom celebration cakes for birthdays, weddings, and every special occasion.</p></div>
+      <div class="service-card"><div class="service-icon">🍰</div><h3>{{SERVICE_4}}</h3><p>Indulgent tarts, slices, and patisserie made to perfection in our kitchen every day.</p></div>
+      <div class="service-card"><div class="service-icon">☕</div><h3>{{SERVICE_5}}</h3><p>Specialty coffee and hot drinks to enjoy with your favourite bake in our cosy café.</p></div>
+      <div class="service-card"><div class="service-icon">🎁</div><h3>{{SERVICE_6}}</h3><p>Beautiful gift hampers, celebration boxes, and bespoke corporate orders for any occasion.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="why">
+  <div class="section-inner">
+    <div class="section-tag">Our Story</div>
+    <h2 class="section-title">Baked with Heart</h2>
+    <div class="section-divider"></div>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-icon">🌾</div><h3>Finest Ingredients</h3><p>We source the best flour, butter, and local ingredients to ensure every bite is exceptional.</p></div>
+      <div class="why-item"><div class="why-icon">🌅</div><h3>Baked Fresh Daily</h3><p>Everything is baked fresh every morning — you'll never find day-old products here.</p></div>
+      <div class="why-item"><div class="why-icon">👨‍🍳</div><h3>Expert Bakers</h3><p>Our skilled bakers bring years of craft training and a genuine passion for the art of baking.</p></div>
+      <div class="why-item"><div class="why-icon">💛</div><h3>Community Favourite</h3><p>A beloved {{CITY}} institution, trusted by families and food lovers for years.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="section-inner">
+    <div class="section-tag">Customer Reviews</div>
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">{{RATING}} stars from {{REVIEW_COUNT}} reviews. Their love for our bakes keeps us going every morning.</p>
+    <div class="reviews-grid">
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_1_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_1_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_1_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_2_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_2_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_2_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_3_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_3_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_3_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">Order or Visit Us</h2>
+    <div class="section-divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>{{BUSINESS_NAME}}</h3>
+        <div class="contact-item"><div class="icon">📞</div><div><strong>Phone</strong><span>{{PHONE}}</span></div></div>
+        <div class="contact-item"><div class="icon">📍</div><div><strong>Find Us</strong><span>{{ADDRESS}}, {{CITY}}</span></div></div>
+        <div class="contact-item"><div class="icon">🕐</div><div><strong>Opening Hours</strong><span>{{HOURS}}</span></div></div>
+        <div class="contact-item"><div class="icon">🎂</div><div><strong>Custom Orders</strong><span>48 hours notice for custom cakes</span></div></div>
+      </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input type="text" placeholder="Your name"></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="Your number"></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>What are you ordering?</label><select><option>{{SERVICE_1}}</option><option>{{SERVICE_2}}</option><option>{{SERVICE_3}}</option><option>{{SERVICE_4}}</option><option>{{SERVICE_5}}</option><option>{{SERVICE_6}}</option><option>Just a general enquiry</option></select></div>
+        <div class="form-group"><label>Tell us more</label><textarea placeholder="Details about your order, date needed, quantity..."></textarea></div>
+        <button type="submit" class="btn-submit">🥐 Send My Order Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">🥐 <em>{{BUSINESS_NAME}}</em></div>
+    <div class="footer-text">© 2024 {{BUSINESS_NAME}} · {{ADDRESS}}, {{CITY}} · {{PHONE}}</div>
+    <div class="footer-text" style="color:var(--golden2)">{{RATING}}★ · {{REVIEW_COUNT}} Reviews</div>
+  </div>
+</footer>
+
+<div class="demo-badge">🌐 Demo Website</div>
+</body>
+</html>

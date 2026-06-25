@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — Hair Salon in {{CITY}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fffcfe;
+  --bg2: #fdf4f9;
+  --bg3: #fce7f3;
+  --rose: #ec4899;
+  --rose2: #f472b6;
+  --rose3: #fce7f3;
+  --dark: #1a0a12;
+  --dark2: #2d1020;
+  --text: #1a0a12;
+  --muted: #9c6b8a;
+  --border: #f0d6e8;
+  --card: #ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(255,252,254,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-size:1.2rem;font-weight:900;color:var(--dark);letter-spacing:-.5px}
+.logo span{color:var(--rose)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--rose)}
+.nav-cta{background:linear-gradient(135deg,var(--rose),#db2777);color:#fff;padding:.5rem 1.25rem;border-radius:50px;font-weight:700;font-size:.85rem;text-decoration:none;transition:.2s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(236,72,153,0.3)}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden;padding:0 5%}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(236,72,153,0.12) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-150px;left:-150px;width:400px;height:400px;background:radial-gradient(circle,rgba(236,72,153,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-content{padding-top:68px;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--rose3);color:var(--rose);padding:.4rem 1.1rem;border-radius:50px;font-size:.8rem;font-weight:700;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2.2rem,5vw,4.5rem);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:1rem}
+.hero h1 em{font-style:italic;color:var(--rose);display:block}
+.hero-sub{color:var(--muted);max-width:440px;margin-bottom:1.5rem;font-size:1.05rem;line-height:1.8}
+.hero-rating{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
+.stars{color:var(--rose);font-size:1rem;letter-spacing:1px}
+.rating-text{color:var(--muted);font-size:.85rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--rose),#db2777);color:#fff;padding:.85rem 2rem;border-radius:50px;font-weight:700;font-size:.95rem;text-decoration:none;transition:.2s;box-shadow:0 4px 20px rgba(236,72,153,0.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(236,72,153,0.35)}
+.btn-secondary{border:2px solid var(--border);color:var(--dark);padding:.85rem 2rem;border-radius:50px;font-weight:600;font-size:.95rem;text-decoration:none;transition:.2s}
+.btn-secondary:hover{border-color:var(--rose);color:var(--rose)}
+.hero-phone{display:flex;align-items:center;gap:.75rem;margin-top:2rem}
+.hero-phone a{color:var(--rose);font-size:1.15rem;font-weight:700;text-decoration:none}
+.hero-visual{padding-top:68px;display:flex;justify-content:center;align-items:center;position:relative}
+.hero-blob{width:400px;height:480px;background:linear-gradient(145deg,var(--rose3),#fce7f3);border-radius:60% 40% 50% 50%/50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-size:8rem;animation:blobFloat 6s ease-in-out infinite;position:relative}
+@keyframes blobFloat{0%,100%{border-radius:60% 40% 50% 50%/50% 60% 40% 50%;transform:translateY(0)}50%{border-radius:40% 60% 50% 50%/60% 40% 60% 40%;transform:translateY(-15px)}}
+.hero-blob-badge{position:absolute;bottom:40px;right:-20px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:.75rem 1rem;box-shadow:0 8px 30px rgba(0,0,0,0.08);font-size:.85rem;font-weight:600;color:var(--dark)}
+.hero-blob-badge .stat{color:var(--rose);font-size:1.1rem;font-weight:900;display:block}
+
+section{padding:5rem 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--rose);margin-bottom:.75rem}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-1px;margin-bottom:1rem}
+.section-desc{color:var(--muted);max-width:520px;margin-bottom:3rem}
+
+.services{background:var(--bg2)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;transition:.3s}
+.service-card:hover{border-color:var(--rose2);box-shadow:0 10px 40px rgba(236,72,153,0.1);transform:translateY(-4px)}
+.service-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--rose3),#fce7f3);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem}
+.service-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.service-card p{color:var(--muted);font-size:.9rem;line-height:1.7}
+
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem;margin-top:3rem}
+.why-item{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:2rem;text-align:center}
+.why-icon{font-size:2.5rem;margin-bottom:1rem}
+.why-item h3{font-weight:700;margin-bottom:.5rem}
+.why-item p{color:var(--muted);font-size:.9rem}
+
+.reviews{background:var(--bg2)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.review-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem}
+.review-stars{color:var(--rose);font-size:.9rem;letter-spacing:2px;margin-bottom:1rem}
+.review-text{color:var(--muted);font-size:.95rem;margin-bottom:1.5rem;font-style:italic;line-height:1.8}
+.reviewer{display:flex;align-items:center;gap:.75rem}
+.avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--rose),#db2777);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff}
+.reviewer-info .name{font-weight:600;font-size:.9rem}
+.reviewer-info .city{color:var(--muted);font-size:.8rem}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}
+.contact-info h3{font-size:1.4rem;font-weight:700;margin-bottom:1.5rem}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+.contact-item .icon{width:44px;height:44px;background:linear-gradient(135deg,var(--rose3),#fce7f3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-item strong{display:block;font-weight:600;margin-bottom:.2rem}
+.contact-item span{color:var(--muted);font-size:.9rem}
+form{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--muted)}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:#fff;border:2px solid var(--border);border-radius:12px;padding:.7rem 1rem;color:var(--text);font-family:inherit;font-size:.9rem;transition:.2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 4px rgba(236,72,153,0.08)}
+.form-group textarea{height:110px;resize:vertical}
+.btn-submit{width:100%;background:linear-gradient(135deg,var(--rose),#db2777);color:#fff;border:none;padding:.9rem;border-radius:50px;font-weight:700;font-size:.95rem;cursor:pointer;transition:.2s;font-family:inherit}
+.btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 25px rgba(236,72,153,0.3)}
+
+footer{background:var(--dark);padding:3rem 5%}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-size:1.1rem;font-weight:900;color:#fff}
+.footer-logo span{color:var(--rose)}
+.footer-text{color:rgba(255,255,255,0.4);font-size:.85rem}
+
+.demo-badge{position:fixed;bottom:1.5rem;right:1.5rem;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;padding:.5rem 1rem;border-radius:50px;font-size:.75rem;font-weight:700;z-index:999;box-shadow:0 4px 20px rgba(124,58,237,0.4)}
+
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-visual{display:none}}
+@media(max-width:768px){.nav-links{display:none}.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">✂️ <span>{{BUSINESS_NAME}}</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Book</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">💕 Premier Hair Salon · {{CITY}}</div>
+    <h1>Where Style<em>Meets Perfection</em></h1>
+    <p class="hero-sub">{{TAGLINE}} — expert stylists, premium products, and a look that's uniquely you.</p>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span class="rating-text">{{RATING}} · {{REVIEW_COUNT}} happy clients</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book Appointment</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+    <div class="hero-phone">
+      <span>📞</span>
+      <a href="tel:{{PHONE}}">{{PHONE}}</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-blob">
+      ✂️
+      <div class="hero-blob-badge">
+        <span class="stat">{{RATING}}★</span>
+        {{REVIEW_COUNT}} Reviews
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="section-inner">
+    <div class="section-tag">Services</div>
+    <h2 class="section-title">What We Offer</h2>
+    <p class="section-desc">From precision cuts to full colour transformations — we do it all at {{BUSINESS_NAME}}.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">✂️</div><h3>{{SERVICE_1}}</h3><p>Expert precision cuts tailored to your face shape, lifestyle, and personal style vision.</p></div>
+      <div class="service-card"><div class="service-icon">🎨</div><h3>{{SERVICE_2}}</h3><p>Full colour, highlights, balayage, and toning using premium professional colour products.</p></div>
+      <div class="service-card"><div class="service-icon">💇</div><h3>{{SERVICE_3}}</h3><p>Luxurious treatments to restore shine, strength, and health to your hair.</p></div>
+      <div class="service-card"><div class="service-icon">💍</div><h3>{{SERVICE_4}}</h3><p>Stunning bridal and occasion styling that makes you feel extraordinary on your big day.</p></div>
+      <div class="service-card"><div class="service-icon">🌊</div><h3>{{SERVICE_5}}</h3><p>Smoothing treatments, perms, and texture services for your perfect everyday look.</p></div>
+      <div class="service-card"><div class="service-icon">✨</div><h3>{{SERVICE_6}}</h3><p>Professional blowouts and styling for events, photoshoots, and special occasions.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-inner">
+    <div class="section-tag">Why Us</div>
+    <h2 class="section-title">The {{BUSINESS_NAME}} Experience</h2>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-icon">🏅</div><h3>Expert Stylists</h3><p>Our team trains regularly with leading brands to stay ahead of every trend and technique.</p></div>
+      <div class="why-item"><div class="why-icon">💆</div><h3>Relaxing Space</h3><p>A beautifully designed salon where you can unwind and enjoy a truly indulgent experience.</p></div>
+      <div class="why-item"><div class="why-icon">🌿</div><h3>Premium Products</h3><p>We only use professional, cruelty-free products that care for your hair as much as you do.</p></div>
+      <div class="why-item"><div class="why-icon">📱</div><h3>Easy Booking</h3><p>Book online 24/7 or call us — we make scheduling your next visit completely effortless.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="section-inner">
+    <div class="section-tag">Client Love</div>
+    <h2 class="section-title">What Our Clients Say</h2>
+    <p class="section-desc">{{RATING}} stars from {{REVIEW_COUNT}} clients. Their words mean the world to us.</p>
+    <div class="reviews-grid">
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_1_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_1_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_1_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_2_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_2_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_2_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_3_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_3_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_3_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Book Now</div>
+    <h2 class="section-title">Book Your Appointment</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <div class="contact-item"><div class="icon">📞</div><div><strong>Phone</strong><span>{{PHONE}}</span></div></div>
+        <div class="contact-item"><div class="icon">📍</div><div><strong>Salon Address</strong><span>{{ADDRESS}}, {{CITY}}</span></div></div>
+        <div class="contact-item"><div class="icon">🕐</div><div><strong>Opening Hours</strong><span>{{HOURS}}</span></div></div>
+        <div class="contact-item"><div class="icon">💕</div><div><strong>Walk-Ins</strong><span>Walk-ins welcome subject to availability</span></div></div>
+      </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input type="text" placeholder="Jane Smith"></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="Your number"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Preferred Date</label><input type="date"></div>
+          <div class="form-group"><label>Preferred Time</label><input type="time"></div>
+        </div>
+        <div class="form-group"><label>Service</label><select><option>{{SERVICE_1}}</option><option>{{SERVICE_2}}</option><option>{{SERVICE_3}}</option><option>{{SERVICE_4}}</option><option>{{SERVICE_5}}</option><option>{{SERVICE_6}}</option></select></div>
+        <div class="form-group"><label>Anything else?</label><textarea placeholder="Tell us about your hair goals..."></textarea></div>
+        <button type="submit" class="btn-submit">✨ Book My Appointment</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">✂️ <span>{{BUSINESS_NAME}}</span></div>
+    <div class="footer-text">© 2024 {{BUSINESS_NAME}} · {{ADDRESS}}, {{CITY}} · {{PHONE}}</div>
+    <div class="footer-text" style="color:var(--rose)">{{RATING}}★ · {{REVIEW_COUNT}} Reviews</div>
+  </div>
+</footer>
+
+<div class="demo-badge">🌐 Demo Website</div>
+</body>
+</html>

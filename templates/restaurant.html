@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — Restaurant in {{CITY}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0905;
+  --bg2: #110c07;
+  --bg3: #17110a;
+  --amber: #d97706;
+  --amber2: #f59e0b;
+  --cream: #fef3c7;
+  --cream2: #fde68a;
+  --text: #fef3c7;
+  --muted: #a8896a;
+  --border: #2a1f12;
+  --card: #150f08;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,9,5,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-size:1.3rem;font-weight:900;color:var(--cream);letter-spacing:1px}
+.logo em{font-style:italic;color:var(--amber)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;letter-spacing:.5px;transition:.2s}
+.nav-links a:hover{color:var(--amber)}
+.nav-cta{border:1px solid var(--amber);color:var(--amber);padding:.5rem 1.25rem;border-radius:4px;font-weight:600;font-size:.85rem;text-decoration:none;transition:.2s;letter-spacing:.5px}
+.nav-cta:hover{background:var(--amber);color:#000}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0 5%}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 50% 60%,rgba(217,119,6,0.18) 0%,rgba(13,9,5,0) 65%)}
+.hero-texture{position:absolute;inset:0;background-image:radial-gradient(circle at 25% 25%,rgba(217,119,6,0.04) 0%,transparent 50%),radial-gradient(circle at 75% 75%,rgba(217,119,6,0.04) 0%,transparent 50%)}
+.hero-line{position:absolute;top:50%;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(217,119,6,0.2),transparent);transform:translateY(-50%)}
+.hero-content{position:relative;z-index:1;padding-top:70px;max-width:800px}
+.hero-ornament{color:var(--amber);font-size:1.5rem;letter-spacing:8px;margin-bottom:1.5rem;opacity:.6}
+.hero-badge{display:inline-block;border:1px solid rgba(217,119,6,0.3);color:var(--muted);padding:.35rem 1.5rem;border-radius:2px;font-size:.75rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:2rem}
+.hero h1{font-size:clamp(3rem,8vw,6.5rem);font-weight:900;line-height:1;letter-spacing:-3px;color:var(--cream);margin-bottom:1.5rem}
+.hero h1 em{font-style:italic;color:var(--amber);display:block;font-size:.65em;letter-spacing:-1px;font-weight:300;margin-top:.5rem}
+.hero-divider{width:60px;height:2px;background:var(--amber);margin:1.5rem auto;opacity:.6}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:500px;margin:0 auto 2rem;font-weight:300;line-height:1.8}
+.hero-rating{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:2.5rem}
+.stars{color:var(--amber);font-size:1rem;letter-spacing:2px}
+.rating-text{color:var(--muted);font-size:.85rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--amber);color:#000;padding:.9rem 2.5rem;border-radius:4px;font-weight:700;font-size:.95rem;text-decoration:none;transition:.2s;letter-spacing:.5px}
+.btn-primary:hover{background:var(--amber2);transform:translateY(-2px)}
+.btn-secondary{border:1px solid rgba(254,243,199,0.2);color:var(--cream);padding:.9rem 2.5rem;border-radius:4px;font-weight:500;font-size:.95rem;text-decoration:none;transition:.2s}
+.btn-secondary:hover{border-color:var(--amber);color:var(--amber)}
+
+section{padding:5.5rem 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-ornament{color:var(--amber);font-size:.8rem;letter-spacing:5px;text-transform:uppercase;margin-bottom:.5rem;opacity:.7}
+.section-tag{font-size:.7rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-1px;margin-bottom:.75rem;color:var(--cream)}
+.section-divider{width:40px;height:2px;background:var(--amber);margin-bottom:1.5rem;opacity:.6}
+.section-desc{color:var(--muted);max-width:520px;margin-bottom:3rem;line-height:1.8}
+
+.menu{background:var(--bg2)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1px;background:var(--border)}
+.service-card{background:var(--card);padding:2rem;transition:.3s;position:relative}
+.service-card::after{content:'';position:absolute;inset:0;border:1px solid transparent;transition:.3s}
+.service-card:hover::after{border-color:rgba(217,119,6,0.3)}
+.service-icon{font-size:2rem;margin-bottom:1rem}
+.service-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--cream);letter-spacing:.5px}
+.service-card p{color:var(--muted);font-size:.9rem;line-height:1.7}
+
+.why{background:var(--bg3)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2rem;margin-top:3rem}
+.why-item{text-align:center;padding:2rem;border:1px solid var(--border);border-radius:4px}
+.why-icon{font-size:2.2rem;margin-bottom:1rem}
+.why-item h3{font-weight:700;margin-bottom:.5rem;color:var(--cream)}
+.why-item p{color:var(--muted);font-size:.9rem;line-height:1.7}
+
+.reviews{background:var(--bg2)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.review-card{background:var(--card);border:1px solid var(--border);padding:2rem}
+.review-stars{color:var(--amber);font-size:.9rem;letter-spacing:3px;margin-bottom:1.25rem}
+.review-text{color:var(--muted);font-size:.95rem;margin-bottom:1.5rem;font-style:italic;line-height:1.8}
+.reviewer{display:flex;align-items:center;gap:.75rem}
+.avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--amber),#92400e);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#000}
+.reviewer-info .name{font-weight:600;font-size:.9rem;color:var(--cream)}
+.reviewer-info .city{color:var(--muted);font-size:.8rem}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}
+.contact-info h3{font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;color:var(--cream);letter-spacing:.5px}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.contact-item:last-child{border-bottom:none}
+.contact-item .icon{font-size:1.3rem}
+.contact-item strong{display:block;font-weight:600;margin-bottom:.2rem;color:var(--cream)}
+.contact-item span{color:var(--muted);font-size:.9rem}
+form{background:var(--card);border:1px solid var(--border);padding:2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.8rem;font-weight:600;margin-bottom:.4rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:.75rem 1rem;color:var(--text);font-family:inherit;font-size:.9rem;transition:.2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--amber)}
+.form-group textarea{height:110px;resize:vertical}
+.btn-submit{width:100%;background:var(--amber);color:#000;border:none;padding:.9rem;border-radius:3px;font-weight:700;font-size:.95rem;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:.5px}
+.btn-submit:hover{background:var(--amber2)}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5%}
+.footer-inner{max-width:1200px;margin:0 auto;text-align:center}
+.footer-logo{font-size:1.3rem;font-weight:900;color:var(--cream);margin-bottom:.5rem}
+.footer-logo em{color:var(--amber);font-style:italic}
+.footer-text{color:var(--muted);font-size:.85rem}
+
+.demo-badge{position:fixed;bottom:1.5rem;right:1.5rem;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;padding:.5rem 1rem;border-radius:50px;font-size:.75rem;font-weight:700;z-index:999;box-shadow:0 4px 20px rgba(124,58,237,0.4)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo"><em>{{BUSINESS_NAME}}</em></div>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#why">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Reserve</a></li>
+    </ul>
+    <a href="tel:{{PHONE}}" class="nav-cta">Reserve a Table</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-content">
+    <div class="hero-ornament">✦ ✦ ✦</div>
+    <div class="hero-badge">Est. {{CITY}}</div>
+    <h1>{{BUSINESS_NAME}}<em>Authentic Flavours in {{CITY}}</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">{{TAGLINE}} — where every dish tells a story and every meal becomes a memory.</p>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span class="rating-text">{{RATING}} · {{REVIEW_COUNT}} guest reviews</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Reserve a Table</a>
+      <a href="#menu" class="btn-secondary">View Menu</a>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="menu">
+  <div class="section-inner">
+    <div class="section-tag">Our Menu</div>
+    <h2 class="section-title">Culinary Highlights</h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">Crafted with the finest ingredients, every dish at {{BUSINESS_NAME}} is a celebration of authentic flavour.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">🍽️</div><h3>{{SERVICE_1}}</h3><p>A signature dish crafted with care, using only the freshest seasonal ingredients sourced locally.</p></div>
+      <div class="service-card"><div class="service-icon">🥗</div><h3>{{SERVICE_2}}</h3><p>Vibrant, fresh starters to awaken the palate and set the tone for an unforgettable meal.</p></div>
+      <div class="service-card"><div class="service-icon">🔥</div><h3>{{SERVICE_3}}</h3><p>Our chef's masterpieces — bold flavours, stunning presentation, and timeless recipes.</p></div>
+      <div class="service-card"><div class="service-icon">🥩</div><h3>{{SERVICE_4}}</h3><p>Premium cuts and traditional preparations that have made us famous throughout {{CITY}}.</p></div>
+      <div class="service-card"><div class="service-icon">🍷</div><h3>{{SERVICE_5}}</h3><p>A curated wine list and handcrafted cocktails to perfectly complement your dining experience.</p></div>
+      <div class="service-card"><div class="service-icon">🍰</div><h3>{{SERVICE_6}}</h3><p>Indulgent desserts made in-house daily — the perfect ending to a perfect evening.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="why">
+  <div class="section-inner">
+    <div class="section-tag">Our Story</div>
+    <h2 class="section-title">Why {{CITY}} Loves Us</h2>
+    <div class="section-divider"></div>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-icon">👨‍🍳</div><h3>Master Chefs</h3><p>Our kitchen team brings decades of culinary expertise and a passion for authentic recipes.</p></div>
+      <div class="why-item"><div class="why-icon">🌿</div><h3>Fresh Ingredients</h3><p>We source the finest local ingredients daily, ensuring every plate is at its peak flavour.</p></div>
+      <div class="why-item"><div class="why-icon">🕯️</div><h3>Warm Atmosphere</h3><p>An intimate, beautifully appointed space perfect for romantic dinners and special celebrations.</p></div>
+      <div class="why-item"><div class="why-icon">🏆</div><h3>Award Winning</h3><p>Recognised for culinary excellence with consistently outstanding reviews from {{CITY}}'s food lovers.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="section-inner">
+    <div class="section-tag">Guest Reviews</div>
+    <h2 class="section-title">What Our Guests Say</h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">{{RATING}} stars from {{REVIEW_COUNT}} dining experiences. We're honoured by every review.</p>
+    <div class="reviews-grid">
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_1_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_1_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_1_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_2_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_2_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_2_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_3_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_3_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_3_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Reservations</div>
+    <h2 class="section-title">Reserve Your Table</h2>
+    <div class="section-divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>{{BUSINESS_NAME}}</h3>
+        <div class="contact-item"><div class="icon">📞</div><div><strong>Reservations</strong><span>{{PHONE}}</span></div></div>
+        <div class="contact-item"><div class="icon">📍</div><div><strong>Location</strong><span>{{ADDRESS}}, {{CITY}}</span></div></div>
+        <div class="contact-item"><div class="icon">🕐</div><div><strong>Opening Hours</strong><span>{{HOURS}}</span></div></div>
+        <div class="contact-item"><div class="icon">🎉</div><div><strong>Private Events</strong><span>We host private dining &amp; celebrations</span></div></div>
+      </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group"><label>Name</label><input type="text" placeholder="Your name"></div>
+          <div class="form-group"><label>Phone</label><input type="tel" placeholder="Your number"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Date</label><input type="date"></div>
+          <div class="form-group"><label>Guests</label><select><option>1 Guest</option><option>2 Guests</option><option>3-4 Guests</option><option>5-6 Guests</option><option>7+ Guests</option></select></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Special Requests</label><textarea placeholder="Dietary requirements, special occasions..."></textarea></div>
+        <button type="submit" class="btn-submit">🍽️ Reserve My Table</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><em>{{BUSINESS_NAME}}</em></div>
+    <div class="footer-text" style="margin:.5rem 0">{{ADDRESS}}, {{CITY}} · {{PHONE}} · {{HOURS}}</div>
+    <div class="footer-text">© 2024 {{BUSINESS_NAME}} · {{RATING}}★ from {{REVIEW_COUNT}} guests</div>
+  </div>
+</footer>
+
+<div class="demo-badge">🌐 Demo Website</div>
+</body>
+</html>

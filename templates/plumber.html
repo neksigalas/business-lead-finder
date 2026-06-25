@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — Plumber in {{CITY}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg2: #f0f7ff;
+  --bg3: #e0f0ff;
+  --navy: #0a1628;
+  --navy2: #0f2040;
+  --cyan: #0ea5e9;
+  --cyan2: #38bdf8;
+  --text: #0a1628;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --card: #ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-size:1.2rem;font-weight:900;color:var(--navy)}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-cta{background:var(--cyan);color:#fff;padding:.5rem 1.25rem;border-radius:6px;font-weight:700;font-size:.85rem;text-decoration:none;transition:.2s}
+.nav-cta:hover{background:var(--cyan2);color:var(--navy)}
+
+.hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 50%,#0d2a50 100%);position:relative;overflow:hidden;padding:0 5%}
+.hero-waves{position:absolute;bottom:0;left:0;right:0;height:200px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200'%3E%3Cpath fill='%230ea5e9' fill-opacity='0.08' d='M0,100 C360,160 720,40 1080,100 C1260,130 1380,80 1440,100 L1440,200 L0,200 Z'/%3E%3C/svg%3E") no-repeat bottom/cover}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(14,165,233,0.1) 1px,transparent 1px);background-size:40px 40px}
+.hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:1;padding-top:68px;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(14,165,233,0.15);border:1px solid rgba(14,165,233,0.3);color:var(--cyan2);padding:.4rem 1rem;border-radius:50px;font-size:.8rem;font-weight:600;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2rem,5vw,4rem);font-weight:900;line-height:1.05;color:#fff;margin-bottom:1rem;letter-spacing:-1.5px}
+.hero h1 em{font-style:normal;color:var(--cyan)}
+.hero-sub{color:rgba(255,255,255,0.7);max-width:460px;margin-bottom:1.5rem;font-size:1.05rem}
+.hero-rating{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
+.stars{color:#fbbf24;font-size:1rem;letter-spacing:1px}
+.rating-text{color:rgba(255,255,255,0.6);font-size:.85rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--cyan);color:#fff;padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;transition:.2s}
+.btn-primary:hover{background:var(--cyan2);color:var(--navy);transform:translateY(-2px)}
+.btn-secondary{border:2px solid rgba(255,255,255,0.2);color:#fff;padding:.85rem 2rem;border-radius:8px;font-weight:600;font-size:1rem;text-decoration:none;transition:.2s}
+.btn-secondary:hover{border-color:var(--cyan);color:var(--cyan)}
+.hero-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:2rem;backdrop-filter:blur(10px)}
+.hero-card h3{color:#fff;font-size:1.2rem;font-weight:700;margin-bottom:1.25rem}
+.hero-stat{display:flex;align-items:center;gap:.75rem;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.hero-stat:last-child{border-bottom:none}
+.stat-icon{font-size:1.3rem}
+.stat-text{color:rgba(255,255,255,0.8);font-size:.9rem}
+.stat-text strong{color:#fff;display:block;font-size:1rem}
+
+section{padding:5rem 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-1px;margin-bottom:1rem;color:var(--navy)}
+.section-desc{color:var(--muted);max-width:520px;margin-bottom:3rem}
+
+.services{background:var(--bg2)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+.service-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.75rem;transition:.3s;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.service-card:hover{border-color:var(--cyan);box-shadow:0 8px 30px rgba(14,165,233,0.15);transform:translateY(-4px)}
+.service-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--cyan),#0284c7);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem}
+.service-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--navy)}
+.service-card p{color:var(--muted);font-size:.9rem}
+
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2rem;margin-top:3rem}
+.why-item{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.75rem;text-align:center}
+.why-icon{font-size:2.2rem;margin-bottom:1rem}
+.why-item h3{font-weight:700;margin-bottom:.5rem;color:var(--navy)}
+.why-item p{color:var(--muted);font-size:.9rem}
+
+.reviews{background:var(--bg2)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.review-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.review-stars{color:#fbbf24;font-size:1rem;letter-spacing:2px;margin-bottom:1rem}
+.review-text{color:var(--muted);font-size:.95rem;margin-bottom:1.25rem;font-style:italic;line-height:1.7}
+.reviewer{display:flex;align-items:center;gap:.75rem}
+.avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--navy));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff}
+.reviewer-info .name{font-weight:600;font-size:.95rem;color:var(--navy)}
+.reviewer-info .city{color:var(--muted);font-size:.8rem}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}
+.contact-info h3{font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;color:var(--navy)}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+.contact-item .icon{width:44px;height:44px;background:linear-gradient(135deg,var(--cyan),#0284c7);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-item strong{display:block;font-weight:600;color:var(--navy);margin-bottom:.2rem}
+.contact-item span{color:var(--muted);font-size:.9rem}
+form{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--navy)}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:#fff;border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-family:inherit;font-size:.9rem;transition:.2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(14,165,233,0.1)}
+.form-group textarea{height:110px;resize:vertical}
+.btn-submit{width:100%;background:var(--cyan);color:#fff;border:none;padding:.85rem;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;transition:.2s;font-family:inherit}
+.btn-submit:hover{background:var(--cyan2);color:var(--navy)}
+
+footer{background:var(--navy);padding:3rem 5%}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-size:1.1rem;font-weight:900;color:#fff}
+.footer-logo span{color:var(--cyan)}
+.footer-text{color:rgba(255,255,255,0.5);font-size:.85rem}
+
+.demo-badge{position:fixed;bottom:1.5rem;right:1.5rem;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;padding:.5rem 1rem;border-radius:50px;font-size:.75rem;font-weight:700;z-index:999;box-shadow:0 4px 20px rgba(124,58,237,0.4)}
+
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr}
+  .hero-card{display:none}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">🔧 <span>{{BUSINESS_NAME}}</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:{{PHONE}}" class="nav-cta">📞 {{PHONE}}</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-waves"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge">💧 Licensed &amp; Insured · {{CITY}}</div>
+      <h1>Your Trusted<br>Plumber in <em>{{CITY}}</em></h1>
+      <p class="hero-sub">{{TAGLINE}} — professional, reliable, and on time every time. Same-day service available.</p>
+      <div class="hero-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-text">{{RATING}} · {{REVIEW_COUNT}} happy customers</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get Free Quote</a>
+        <a href="tel:{{PHONE}}" class="btn-secondary">📞 Call Now</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Why {{CITY}} Trusts Us</h3>
+      <div class="hero-stat"><span class="stat-icon">⚡</span><div class="stat-text"><strong>Same-Day Service</strong>Available 7 days a week</div></div>
+      <div class="hero-stat"><span class="stat-icon">🛡️</span><div class="stat-text"><strong>Fully Guaranteed</strong>All work fully warranted</div></div>
+      <div class="hero-stat"><span class="stat-icon">💰</span><div class="stat-text"><strong>Upfront Pricing</strong>No hidden costs, ever</div></div>
+      <div class="hero-stat"><span class="stat-icon">⭐</span><div class="stat-text"><strong>{{RATING}} Star Rated</strong>{{REVIEW_COUNT}} verified reviews</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="section-inner">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Professional Plumbing Services</h2>
+    <p class="section-desc">From emergency repairs to full installations — we handle all plumbing needs across {{CITY}}.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">🔧</div><h3>{{SERVICE_1}}</h3><p>Fast, professional repairs with lasting solutions and full workmanship guarantee.</p></div>
+      <div class="service-card"><div class="service-icon">🚿</div><h3>{{SERVICE_2}}</h3><p>Complete bathroom plumbing installations and renovations to the highest standard.</p></div>
+      <div class="service-card"><div class="service-icon">🚰</div><h3>{{SERVICE_3}}</h3><p>Kitchen plumbing including sink installations, dishwasher connections, and more.</p></div>
+      <div class="service-card"><div class="service-icon">🌡️</div><h3>{{SERVICE_4}}</h3><p>Boiler servicing, installation, and repairs by Gas Safe registered engineers.</p></div>
+      <div class="service-card"><div class="service-icon">🏚️</div><h3>{{SERVICE_5}}</h3><p>Drain unblocking, CCTV surveys, and full drainage system maintenance.</p></div>
+      <div class="service-card"><div class="service-icon">🚨</div><h3>{{SERVICE_6}}</h3><p>24/7 emergency plumbing — burst pipes, leaks, and flooding dealt with fast.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-inner">
+    <div class="section-tag">Our Promise</div>
+    <h2 class="section-title">The {{BUSINESS_NAME}} Standard</h2>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-icon">🏅</div><h3>Fully Qualified</h3><p>All engineers are fully qualified, insured, and registered with relevant trade bodies.</p></div>
+      <div class="why-item"><div class="why-icon">🕐</div><h3>Always On Time</h3><p>We respect your time. We show up when we say we will — or we'll let you know.</p></div>
+      <div class="why-item"><div class="why-icon">💬</div><h3>Clear Communication</h3><p>We explain everything in plain English before we start, so you're never surprised.</p></div>
+      <div class="why-item"><div class="why-icon">🧹</div><h3>Clean &amp; Tidy</h3><p>We treat your home with respect and leave it exactly as we found it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="section-inner">
+    <div class="section-tag">Reviews</div>
+    <h2 class="section-title">Trusted by {{CITY}} Residents</h2>
+    <p class="section-desc">{{RATING}} stars from {{REVIEW_COUNT}} verified reviews. See what our customers say.</p>
+    <div class="reviews-grid">
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_1_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_1_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_1_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_2_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_2_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_2_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"{{REVIEW_3_TEXT}}"</p><div class="reviewer"><div class="avatar">{{REVIEW_3_NAME}}</div><div class="reviewer-info"><div class="name">{{REVIEW_3_NAME}}</div><div class="city">{{CITY}}</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Contact Us</div>
+    <h2 class="section-title">Get a Free Quote Today</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Reach {{BUSINESS_NAME}}</h3>
+        <div class="contact-item"><div class="icon">📞</div><div><strong>Phone</strong><span>{{PHONE}}</span></div></div>
+        <div class="contact-item"><div class="icon">📍</div><div><strong>Address</strong><span>{{ADDRESS}}, {{CITY}}</span></div></div>
+        <div class="contact-item"><div class="icon">🕐</div><div><strong>Opening Hours</strong><span>{{HOURS}}</span></div></div>
+        <div class="contact-item"><div class="icon">💧</div><div><strong>Emergency</strong><span>24/7 emergency plumbing available</span></div></div>
+      </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input type="text" placeholder="John Smith"></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="Your number"></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@example.com"></div>
+        <div class="form-group"><label>Service Required</label><select><option>{{SERVICE_1}}</option><option>{{SERVICE_2}}</option><option>{{SERVICE_3}}</option><option>{{SERVICE_4}}</option><option>{{SERVICE_5}}</option><option>{{SERVICE_6}}</option><option>Emergency Call-Out</option></select></div>
+        <div class="form-group"><label>Describe the problem</label><textarea placeholder="Tell us what's happening..."></textarea></div>
+        <button type="submit" class="btn-submit">💧 Request Free Quote</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">🔧 <span>{{BUSINESS_NAME}}</span></div>
+    <div class="footer-text">© 2024 {{BUSINESS_NAME}} · {{ADDRESS}}, {{CITY}} · {{PHONE}}</div>
+    <div class="footer-text" style="color:var(--cyan)">{{RATING}}★ · {{REVIEW_COUNT}} Reviews</div>
+  </div>
+</footer>
+
+<div class="demo-badge">🌐 Demo Website</div>
+</body>
+</html>
