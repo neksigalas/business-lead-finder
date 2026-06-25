@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West London Plumbers — 24/7 Emergency Plumbing</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0a1628;
+  --navy2:#112240;
+  --blue:#1d6fa4;
+  --blue2:#2589c4;
+  --cyan:#0ea5e9;
+  --cyan2:#38bdf8;
+  --light:#f8faff;
+  --light2:#eef3fb;
+  --light3:#dde8f5;
+  --text:#0a1628;
+  --muted:#4a6080;
+  --muted2:#8aa0bb;
+  --white:#ffffff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(10,22,40,0.06);
+  box-shadow:0 2px 20px rgba(10,22,40,0.06);
+}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-icon{
+  width:40px;height:40px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(14,165,233,0.3);
+}
+.nav-logo-text{font-size:1.1rem;font-weight:800;color:var(--navy);letter-spacing:-0.02em}
+.nav-logo-text span{color:var(--blue)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--navy)}
+.nav-phone{
+  display:flex;align-items:center;gap:8px;
+  padding:11px 22px;
+  background:var(--navy);
+  color:white;border-radius:10px;font-weight:700;font-size:0.88rem;
+  text-decoration:none;transition:all 0.2s;
+  box-shadow:0 4px 14px rgba(10,22,40,0.2);
+}
+.nav-phone:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(10,22,40,0.3)}
+@media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 50%,#0d2d52 100%);
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;padding:120px 48px 80px;gap:60px;
+  position:relative;overflow:hidden;
+}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding:120px 24px 80px}}
+
+.hero::before{
+  content:'';position:absolute;
+  width:800px;height:800px;border-radius:50%;
+  background:radial-gradient(circle,rgba(14,165,233,0.12) 0%,transparent 70%);
+  top:-200px;right:-200px;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,0.03) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+
+.hero-left{position:relative;z-index:1}
+
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(14,165,233,0.15);
+  border:1px solid rgba(14,165,233,0.3);
+  border-radius:100px;padding:6px 16px 6px 8px;margin-bottom:28px;
+}
+.pill-dot{
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(14,165,233,0.2);
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-pill span{font-size:0.75rem;font-weight:600;color:var(--cyan2);letter-spacing:0.07em;text-transform:uppercase}
+
+.hero h1{
+  font-size:clamp(2.8rem,5vw,4.4rem);
+  font-weight:900;line-height:1.05;letter-spacing:-0.03em;
+  color:white;margin-bottom:24px;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--cyan2),#7dd3fc);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:40px;max-width:480px}
+
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+
+.btn-cyan{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:15px 30px;
+  background:linear-gradient(135deg,var(--cyan),var(--blue2));
+  color:white;border-radius:10px;font-weight:700;font-size:0.95rem;
+  text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 4px 20px rgba(14,165,233,0.4);transition:all 0.25s;
+}
+.btn-cyan:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(14,165,233,0.55)}
+
+.btn-outline-white{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:15px 30px;background:transparent;
+  border:1px solid rgba(255,255,255,0.2);
+  color:white;border-radius:10px;font-weight:600;font-size:0.95rem;
+  text-decoration:none;cursor:pointer;transition:all 0.25s;
+}
+.btn-outline-white:hover{border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);transform:translateY(-2px)}
+
+.hero-badges{display:flex;gap:12px;flex-wrap:wrap}
+.h-badge{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;padding:12px 16px;
+}
+.h-badge-icon{font-size:1.1rem}
+.h-badge-text{font-size:0.82rem;font-weight:600;color:rgba(255,255,255,0.85)}
+.h-badge-sub{font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:1px}
+
+/* Hero right card */
+.hero-right{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
+@media(max-width:900px){.hero-right{display:none}}
+
+.profile-card{
+  background:white;border-radius:24px;padding:32px;width:340px;
+  box-shadow:0 32px 80px rgba(0,0,0,0.4);
+}
+.pc-top{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--light3)}
+.pc-avatar{
+  width:60px;height:60px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;font-weight:800;color:white;
+}
+.pc-name{font-size:1.1rem;font-weight:800;color:var(--navy)}
+.pc-role{font-size:0.8rem;color:var(--muted);margin-top:2px}
+.pc-rating{display:flex;align-items:center;gap:6px;margin-top:6px}
+.pc-stars{color:#f59e0b;font-size:0.85rem;letter-spacing:1px}
+.pc-rcount{font-size:0.78rem;color:var(--muted)}
+
+.pc-stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
+.pc-stat{text-align:center;padding:14px 8px;background:var(--light);border-radius:12px}
+.pc-stat-n{font-size:1.4rem;font-weight:800;color:var(--blue)}
+.pc-stat-l{font-size:0.68rem;color:var(--muted);margin-top:2px;line-height:1.3}
+
+.pc-avail{
+  display:flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(5,150,105,0.06));
+  border:1px solid rgba(16,185,129,0.2);
+  border-radius:12px;padding:14px 16px;
+}
+.avail-dot{width:10px;height:10px;border-radius:50%;background:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,0.2);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(16,185,129,0.2)}50%{box-shadow:0 0 0 6px rgba(16,185,129,0.1)}}
+.avail-text{font-size:0.85rem;font-weight:700;color:#065f46}
+.avail-sub{font-size:0.72rem;color:#34d399;margin-top:1px}
+
+/* WAVE */
+.wave-divider{display:block;width:100%;background:var(--navy2);line-height:0}
+.wave-divider svg{display:block;width:100%}
+
+/* SECTIONS */
+section{padding:96px 48px}
+@media(max-width:600px){section{padding:64px 20px}}
+.container{max-width:1100px;margin:0 auto}
+.sec-tag{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--blue);margin-bottom:10px;display:block}
+.sec-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:14px;line-height:1.15;color:var(--navy)}
+.sec-sub{font-size:0.95rem;color:var(--muted);max-width:480px;line-height:1.75;margin-bottom:56px}
+
+/* SERVICES */
+.svc-section{background:var(--light)}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
+.svc-card{
+  background:white;border-radius:18px;padding:28px;
+  border:1px solid var(--light3);
+  box-shadow:0 2px 12px rgba(10,22,40,0.06);
+  transition:all 0.25s;position:relative;overflow:hidden;
+}
+.svc-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  opacity:0;transition:opacity 0.3s;
+}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(10,22,40,0.12)}
+.svc-card:hover::after{opacity:1}
+.svc-num{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;color:var(--muted2);margin-bottom:16px}
+.svc-icon{
+  width:50px;height:50px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(29,111,164,0.1),rgba(14,165,233,0.1));
+  border:1px solid rgba(14,165,233,0.15);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  font-size:1.4rem;
+}
+.svc-card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.svc-card p{font-size:0.85rem;color:var(--muted);line-height:1.65}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-img-wrap{position:relative}
+.about-img-card{
+  background:linear-gradient(135deg,var(--navy),var(--navy2));
+  border-radius:24px;padding:40px;
+  box-shadow:0 24px 60px rgba(10,22,40,0.2);
+}
+.about-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.as-item{
+  background:rgba(255,255,255,0.06);border-radius:14px;padding:20px;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.as-num{font-size:2rem;font-weight:900;color:white;letter-spacing:-0.03em}
+.as-num span{font-size:1rem;color:var(--cyan2)}
+.as-lbl{font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:4px}
+.about-quote{
+  background:rgba(14,165,233,0.1);border-left:3px solid var(--cyan);
+  border-radius:0 12px 12px 0;padding:18px 20px;
+  font-size:0.9rem;color:rgba(255,255,255,0.8);line-height:1.65;font-style:italic;
+}
+.about-points{display:flex;flex-direction:column;gap:16px}
+.ap-item{display:flex;gap:14px;align-items:flex-start}
+.ap-check{
+  width:28px;height:28px;flex-shrink:0;border-radius:8px;
+  background:linear-gradient(135deg,rgba(14,165,233,0.15),rgba(29,111,164,0.15));
+  border:1px solid rgba(14,165,233,0.2);
+  display:flex;align-items:center;justify-content:center;margin-top:2px;
+  font-size:0.85rem;color:var(--blue);
+}
+.ap-title{font-size:0.92rem;font-weight:700;color:var(--navy);margin-bottom:3px}
+.ap-desc{font-size:0.83rem;color:var(--muted);line-height:1.55}
+
+/* REVIEWS */
+.rv-section{background:var(--navy)}
+.rv-section .sec-title{color:white}
+.rv-section .sec-tag{color:var(--cyan2)}
+.rv-section .sec-sub{color:rgba(255,255,255,0.5)}
+.rv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.rv-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:18px;padding:24px;
+  transition:all 0.2s;
+}
+.rv-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(14,165,233,0.2);transform:translateY(-2px)}
+.rv-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.rv-avatar{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:0.95rem;color:white;
+}
+.rv-name{font-weight:700;font-size:0.88rem;color:white}
+.rv-meta{font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:2px}
+.rv-stars{color:#f59e0b;font-size:0.8rem;letter-spacing:1px;margin-bottom:10px}
+.rv-text{font-size:0.84rem;color:rgba(255,255,255,0.55);line-height:1.65}
+.rv-text strong{color:rgba(255,255,255,0.85);font-weight:600}
+
+/* CTA BAND */
+.cta-band{
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  padding:64px 48px;text-align:center;
+}
+.cta-band h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:white;margin-bottom:12px;letter-spacing:-0.03em}
+.cta-band p{font-size:1rem;color:rgba(255,255,255,0.75);margin-bottom:32px}
+.btn-white{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:16px 36px;background:white;
+  color:var(--blue);border-radius:12px;font-weight:700;font-size:1rem;
+  text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,0.2);transition:all 0.25s;border:none;cursor:pointer;
+}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,0.25)}
+
+/* CONTACT */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+@media(max-width:768px){.contact-layout{grid-template-columns:1fr}}
+.ci-list{display:flex;flex-direction:column;gap:14px}
+.ci-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:20px;background:var(--light);
+  border:1px solid var(--light3);border-radius:14px;transition:border-color 0.2s;
+}
+.ci-item:hover{border-color:rgba(14,165,233,0.3)}
+.ci-ico{
+  width:42px;height:42px;flex-shrink:0;border-radius:11px;
+  background:linear-gradient(135deg,rgba(29,111,164,0.1),rgba(14,165,233,0.1));
+  border:1px solid rgba(14,165,233,0.15);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.ci-lbl{font-size:0.72rem;color:var(--muted);margin-bottom:3px;font-weight:500;text-transform:uppercase;letter-spacing:0.04em}
+.ci-val{font-size:0.95rem;font-weight:600;color:var(--navy)}
+.ci-val a{color:var(--blue);text-decoration:none}
+.ci-val a:hover{text-decoration:underline}
+
+.cf-card{
+  background:var(--navy);border-radius:20px;padding:36px;
+  box-shadow:0 16px 48px rgba(10,22,40,0.15);
+}
+.cf-card h3{font-size:1.15rem;font-weight:800;color:white;margin-bottom:4px}
+.cf-card .cf-sub{font-size:0.83rem;color:rgba(255,255,255,0.4);margin-bottom:28px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.4);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em}
+.fg input,.fg textarea{
+  width:100%;padding:13px 16px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:9px;color:white;
+  font-size:0.9rem;font-family:'Inter',sans-serif;
+  outline:none;transition:border-color 0.2s;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,0.25)}
+.fg input:focus,.fg textarea:focus{border-color:rgba(14,165,233,0.5);background:rgba(14,165,233,0.04)}
+.fg textarea{resize:vertical;min-height:100px}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* FOOTER */
+footer{
+  background:var(--navy);
+  border-top:1px solid rgba(255,255,255,0.05);
+  padding:28px 48px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.foot-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.foot-logo-icon{
+  width:32px;height:32px;background:linear-gradient(135deg,var(--blue),var(--cyan));
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+}
+.foot-logo span{font-size:0.95rem;font-weight:800;color:white}
+.foot-logo span b{color:var(--cyan2)}
+footer p{font-size:0.78rem;color:rgba(255,255,255,0.25)}
+
+/* DEMO */
+.demo-badge{
+  position:fixed;bottom:20px;right:20px;z-index:999;
+  background:linear-gradient(135deg,#7c3aed,#2563eb);
+  color:white;padding:11px 18px;border-radius:12px;
+  font-size:0.8rem;font-weight:600;
+  box-shadow:0 8px 24px rgba(0,0,0,0.3);
+  border:1px solid rgba(255,255,255,0.12);line-height:1.4;
+}
+.demo-badge span{display:block;font-size:0.7rem;opacity:0.65;margin-top:2px}
+</style>
+</head>
+<body>
+
+<div class="demo-badge">🎨 Demo Website<span>West London Plumbers</span></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+        <path d="M6.5 17.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5S8 15.17 8 16s-.67 1.5-1.5 1.5zM9 6.5C8.17 6.5 7.5 5.83 7.5 5S8.17 3.5 9 3.5s1.5.67 1.5 1.5S9.83 6.5 9 6.5zM12 2v2M12 20v2M2 12h2M20 12h2"/>
+        <path d="M3 7c1.5 1 3 1.5 4.5 1.5S10.5 8 12 7s3 .5 4.5 1.5S19 8 20.5 7" stroke-width="1.5"/>
+        <ellipse cx="12" cy="12" rx="4" ry="6" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">West London <span>Plumbers</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+447913620199" class="nav-phone">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    +44 7913 620199
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-pill">
+      <div class="pill-dot">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+      </div>
+      <span>Open 24 Hours · West London</span>
+    </div>
+    <h1>Your Trusted<br>Plumber in<br><em>West London</em></h1>
+    <p class="hero-desc">Fast, honest and reliable plumbing service. From emergency repairs to full installations — we're there when you need us most, day or night.</p>
+    <div class="hero-actions">
+      <a href="tel:+447913620199" class="btn-cyan">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Patrick Now
+      </a>
+      <a href="#services" class="btn-outline-white">View Services →</a>
+    </div>
+    <div class="hero-badges">
+      <div class="h-badge">
+        <span class="h-badge-icon">⭐</span>
+        <div>
+          <div class="h-badge-text">5.0 Google Rating</div>
+          <div class="h-badge-sub">61 reviews</div>
+        </div>
+      </div>
+      <div class="h-badge">
+        <span class="h-badge-icon">⚡</span>
+        <div>
+          <div class="h-badge-text">30 min response</div>
+          <div class="h-badge-sub">Emergencies welcome</div>
+        </div>
+      </div>
+      <div class="h-badge">
+        <span class="h-badge-icon">🔒</span>
+        <div>
+          <div class="h-badge-text">Fully insured</div>
+          <div class="h-badge-sub">All work guaranteed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="profile-card">
+      <div class="pc-top">
+        <div class="pc-avatar">P</div>
+        <div>
+          <div class="pc-name">Patrick</div>
+          <div class="pc-role">Master Plumber · West London</div>
+          <div class="pc-rating">
+            <span class="pc-stars">★★★★★</span>
+            <span class="pc-rcount">5.0 (61 reviews)</span>
+          </div>
+        </div>
+      </div>
+      <div class="pc-stat-row">
+        <div class="pc-stat">
+          <div class="pc-stat-n">61</div>
+          <div class="pc-stat-l">5-star reviews</div>
+        </div>
+        <div class="pc-stat">
+          <div class="pc-stat-n">30<span>min</span></div>
+          <div class="pc-stat-l">avg response</div>
+        </div>
+        <div class="pc-stat">
+          <div class="pc-stat-n">24<span>h</span></div>
+          <div class="pc-stat-l">available</div>
+        </div>
+      </div>
+      <div class="pc-avail">
+        <div class="avail-dot"></div>
+        <div>
+          <div class="avail-text">Available Right Now</div>
+          <div class="avail-sub">Open 24 hours · 7 days a week</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="svc-section" id="services">
+  <div class="container">
+    <span class="sec-tag">— Services</span>
+    <div class="sec-title">What we can fix for you</div>
+    <div class="sec-sub">From a dripping tap to a full boiler replacement — no job is too big or too small.</div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <div class="svc-icon">🚨</div>
+        <h3>Emergency Repairs</h3>
+        <p>Burst pipes, leaks, no water — we respond fast. Patrick has been known to arrive within 30 minutes of your call.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-icon">🔥</div>
+        <h3>Boiler & Heating</h3>
+        <p>Boiler breakdowns, heating issues and hot water problems solved quickly and efficiently by our experienced team.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-icon">🚿</div>
+        <h3>Bathrooms & Kitchens</h3>
+        <p>Tap replacements, leaking sinks, bath installations and full bathroom fitting — clean and tidy work guaranteed.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <div class="svc-icon">🔧</div>
+        <h3>Pipe Work</h3>
+        <p>Old pipe replacement, rerouting and new installations. We work cleanly and professionally every time.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <div class="svc-icon">🏠</div>
+        <h3>Home Renovations</h3>
+        <p>Full plumbing for renovations and new builds. We work closely with clients to meet deadlines and exceed expectations.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">06</div>
+        <div class="svc-icon">🧺</div>
+        <h3>Appliance Installation</h3>
+        <p>Washing machines, dishwashers, water systems and more. Professional installation with peace of mind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-img-card">
+          <div class="about-stat-grid">
+            <div class="as-item">
+              <div class="as-num">61<span>★</span></div>
+              <div class="as-lbl">5-star Google reviews</div>
+            </div>
+            <div class="as-item">
+              <div class="as-num">24<span>h</span></div>
+              <div class="as-lbl">Always available</div>
+            </div>
+            <div class="as-item">
+              <div class="as-num">30<span>m</span></div>
+              <div class="as-lbl">Response time</div>
+            </div>
+            <div class="as-item">
+              <div class="as-num">100<span>%</span></div>
+              <div class="as-lbl">Satisfaction rate</div>
+            </div>
+          </div>
+          <div class="about-quote">
+            "Our mission is to provide the residents of West London with a no hassle plumbing service where all work exceeds expectations, meets deadlines and offers excellent value for money."
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="sec-tag">— Why choose us</span>
+        <div class="sec-title">West London's most trusted plumber</div>
+        <div class="sec-sub">Patrick and his team have built a reputation for honesty, speed and quality — backed by 61 five-star reviews.</div>
+        <div class="about-points">
+          <div class="ap-item">
+            <div class="ap-check">✓</div>
+            <div>
+              <div class="ap-title">Honest & Transparent</div>
+              <div class="ap-desc">Patrick will even guide you over the phone for free — no unnecessary call-outs just to charge you.</div>
+            </div>
+          </div>
+          <div class="ap-item">
+            <div class="ap-check">✓</div>
+            <div>
+              <div class="ap-title">Lightning Fast Response</div>
+              <div class="ap-desc">One client had no water — Patrick arrived within 30 minutes. Even available on Christmas Eve.</div>
+            </div>
+          </div>
+          <div class="ap-item">
+            <div class="ap-check">✓</div>
+            <div>
+              <div class="ap-title">Fair & Competitive Prices</div>
+              <div class="ap-desc">Reasonable rates with no hidden surprises. Exactly what you want from a trusted tradesperson.</div>
+            </div>
+          </div>
+          <div class="ap-item">
+            <div class="ap-check">✓</div>
+            <div>
+              <div class="ap-title">Clean & Tidy Work</div>
+              <div class="ap-desc">Every job is left spotless. We respect your home and take pride in the quality of our finish.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="rv-section" id="reviews">
+  <div class="container">
+    <span class="sec-tag">— Customer Reviews</span>
+    <div class="sec-title">What our clients say</div>
+    <div class="sec-sub">Real reviews from real customers on Google Maps.</div>
+    <div class="rv-grid">
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#0ea5e9,#0284c7)">Y</div>
+          <div><div class="rv-name">Yeen Chan</div><div class="rv-meta">Google Review · 5 months ago</div></div>
+        </div>
+        <div class="rv-stars">★★★★★</div>
+        <div class="rv-text">«You don't often come across someone like Patrick, <strong>an honest tradesperson with integrity</strong>. Safe to say he will be my plumber for life.»</div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#10b981,#059669)">R</div>
+          <div><div class="rv-name">robin kyle</div><div class="rv-meta">Google Review · 2 months ago</div></div>
+        </div>
+        <div class="rv-stars">★★★★★</div>
+        <div class="rv-text">«Patrick was very prompt, friendly and provided a <strong>very quick and quality service within 3 hours</strong> of my contact. Very honest and helpful.»</div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">I</div>
+          <div><div class="rv-name">Imogen Morris</div><div class="rv-meta">Google Review · 4 months ago</div></div>
+        </div>
+        <div class="rv-stars">★★★★★</div>
+        <div class="rv-text">«Patrick came to my flat, figured out the stopcock had been switched off, and <strong>refused to charge me</strong> as it took only a moment. Incredible integrity.»</div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)">Y</div>
+          <div><div class="rv-name">Y Zuo</div><div class="rv-meta">Google Review · 8 months ago</div></div>
+        </div>
+        <div class="rv-stars">★★★★★</div>
+        <div class="rv-text">«I texted Patrick late at night when my boiler stopped working, <strong>they replied straight away</strong> and guided me to fix the issue. Really friendly and professional!»</div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#f43f5e,#e11d48)">B</div>
+          <div><div class="rv-name">Boris Ng</div><div class="rv-meta">Google Review · 7 months ago</div></div>
+        </div>
+        <div class="rv-stars">★★★★★</div>
+        <div class="rv-text">«Patrick is incredibly friendly and even was willing to return for a follow-up in the evening. <strong>He has the well-being of the clients at heart.</strong>»</div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#06b6d4,#0891b2)">J</div>
+          <div><div class="rv-name">Joan Donald</div><div class="rv-meta">Google Review · a year ago</div></div>
+        </div>
+        <div class="rv-stars">★★★★★</div>
+        <div class="rv-text">«Answered my call promptly <strong>2 days before Christmas</strong>. Communicated arrival times throughout repairs. Fully explained what was required. Excellent.»</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Need a plumber right now?</h2>
+  <p>We're available 24/7 — call Patrick directly and we'll be with you fast.</p>
+  <a href="tel:+447913620199" class="btn-white">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    +44 7913 620199
+  </a>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <span class="sec-tag">— Contact</span>
+    <div class="sec-title">Get in touch</div>
+    <div class="sec-sub">Call us directly or send a message and we'll get back to you promptly.</div>
+    <div class="contact-layout">
+      <div class="ci-list">
+        <div class="ci-item">
+          <div class="ci-ico">📍</div>
+          <div><div class="ci-lbl">Area covered</div><div class="ci-val">West London & surrounding areas</div></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ico">📞</div>
+          <div><div class="ci-lbl">Phone</div><div class="ci-val"><a href="tel:+447913620199">+44 7913 620199</a></div></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ico">🕐</div>
+          <div><div class="ci-lbl">Hours</div><div class="ci-val">Open 24 hours · 7 days a week</div></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ico">⚡</div>
+          <div><div class="ci-lbl">Emergency</div><div class="ci-val">Same-day response guaranteed</div></div>
+        </div>
+      </div>
+      <div class="cf-card">
+        <h3>Send a message</h3>
+        <p class="cf-sub">We'll reply as soon as possible — usually within the hour.</p>
+        <div class="fg-row">
+          <div class="fg"><label>Name</label><input type="text" placeholder="Your name"></div>
+          <div class="fg"><label>Phone</label><input type="tel" placeholder="07XXX XXXXXX"></div>
+        </div>
+        <div class="fg"><label>Describe the issue</label><textarea placeholder="What do you need help with?"></textarea></div>
+        <button class="btn-cyan" style="width:100%;justify-content:center;font-size:0.95rem;padding:15px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="foot-logo">
+    <div class="foot-logo-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    </div>
+    <span>West London <b>Plumbers</b></span>
+  </a>
+  <p>© 2025 West London Plumbers · All rights reserved · +44 7913 620199</p>
+</footer>
+
+</body>
+</html>
